@@ -1,9 +1,9 @@
-import pyodbc
 import os
 from dotenv import load_dotenv
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sqlalchemy import create_engine
 
 # Load environment variables from .env file
 load_dotenv()
@@ -24,16 +24,11 @@ database = SQL_DATABASE  # Use the loaded environment variable
 username = SQL_USERNAME      # Use the loaded environment variable
 password = SQL_PASSWORD  # Use the loaded environment variable
 
-# Connection string
+# SQLAlchemy connection string for SQL Server (ODBC Driver 18)
 connection_string = (
-    f'DRIVER={{ODBC Driver 18 for SQL Server}};'
-    f'SERVER={server};'
-    f'DATABASE={database};'
-    f'UID={username};'
-    f'PWD={password};'
-    'Encrypt=yes;'
-    'TrustServerCertificate=yes;'
-    'Connection Timeout=30;'
+    f"mssql+pyodbc://{username}:{password}@{server}/{database}"
+    "?driver=ODBC+Driver+18+for+SQL+Server"
+    "&Encrypt=yes&TrustServerCertificate=yes&Connection+Timeout=30"
 )
 
 # Your provided SQL query
@@ -76,12 +71,13 @@ ORDER BY
 '''
 
 try:
-    # Establish connection
-    conn = pyodbc.connect(connection_string)
-    print("Connection successful!")
+    # Create SQLAlchemy engine
+    engine = create_engine(connection_string)
+    print("SQLAlchemy engine created!")
 
     # Fetch data into a pandas DataFrame
-    df = pd.read_sql(sql_query, conn)
+    with engine.connect() as conn:
+        df = pd.read_sql_query(sql_query, conn)
     print(df.head())
 
     # Convert LastServiceDate to datetime
@@ -100,10 +96,13 @@ try:
     plt.xlabel('Month')
     plt.ylabel('Number of Customers Serviced')
     plt.title('Customers Serviced by Month')
+
+    # Annotate each bar with the value
+    for i, v in enumerate(monthly_counts['CustomersServiced']):
+        ax.text(i, v + 0.5, str(v), color='black', ha='center', va='bottom', fontweight='bold')
+
     plt.tight_layout()
     plt.show()
 
-    # Clean up
-    conn.close()
 except Exception as e:
     print(f"An error occurred: {e}")
