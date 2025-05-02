@@ -1,0 +1,18 @@
+erDiagram
+    "ARC.TextMessage" {
+        int Id
+        int TextMessageId
+        int CustId
+        nvarchar Body
+        bigint ExternalId
+        int Type
+        nvarchar PhoneNumber
+        int Direction
+        int Status
+        nvarchar ErrorMessage
+        int ErrorCode
+        datetime Date
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    %% Cross-schema: "SM.Customers" ||--o{ "ARC.TextMessage" : "FK_ARC_TextMessage_Customers"

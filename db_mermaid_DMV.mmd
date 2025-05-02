@@ -1,0 +1,182 @@
+erDiagram
+    "DMV.AAIAIdMapping" {
+        int AAIAId
+        int VehicleConfigurationId
+        timestamp timestamp
+    }
+    "DMV.ACESIdMapping" {
+        int AcesID
+        int AcesEngineID
+        int VehicleConfigurationID
+        int AcesBaseID
+        int AcesEngineConfigID
+        int AcesSubModelID
+    }
+    "DMV.BodyStyle" {
+        int BodyStyleId
+        nvarchar Name
+        timestamp timestamp
+    }
+    "DMV.Brake" {
+        int BrakeId
+        nvarchar BrakeSystemType
+        timestamp timestamp
+    }
+    "DMV.Drive" {
+        int DriveId
+        nvarchar DriveType
+        timestamp timestamp
+    }
+    "DMV.Engine" {
+        int EngineId
+        real DisplacementCID
+        real DisplacementLiters
+        int NumberOfCylinders
+        int ValvesPerCylinder
+        nvarchar FuelDeliveryMethodType
+        nvarchar FuelType
+        nvarchar FuelControlType
+        nvarchar HeadConfigurationType
+        nvarchar BoostType
+        nvarchar IgnitionSystem
+        nvarchar VinCode
+        nvarchar FuelSystem
+        nvarchar BlockConfiguration
+        nvarchar FuelSystemConfiguration
+        timestamp timestamp
+    }
+    "DMV.GVW" {
+        int GVWId
+        nvarchar GVWText
+        timestamp timestamp
+    }
+    "DMV.Make" {
+        int MakeId
+        nvarchar Name
+        timestamp timestamp
+    }
+    "DMV.Model" {
+        int ModelId
+        int MakeId
+        nvarchar Name
+        timestamp timestamp
+    }
+    "DMV.ShopMgtVehicleConfig" {
+        int ShopMgtVehicleConfigId
+        int Year
+        int MakeId
+        int ModelId
+        int SubModelId
+        int BodyStyleId
+        int EngineId
+        int BrakeId
+        int TransmissionId
+        int GVWId
+        int DriveId
+    }
+    "DMV.SubModel" {
+        int SubModelId
+        int ModelId
+        nvarchar Name
+        int DMVId
+        timestamp timestamp
+    }
+    "DMV.Transmission" {
+        int TransmissionId
+        nvarchar TransmissionType
+        nvarchar ManufacturerCode
+        nvarchar ControlType
+        bit ElectronicControlled
+        int NumberOfSpeeds
+        timestamp timestamp
+    }
+    "DMV.VehicleConfigurationMapping" {
+        int VehicleConfigurationId
+        int ShopMgtVehicleConfigId
+    }
+    "DMV.Version" {
+        datetime DMVVersionDate
+        int VersionNumber
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "DMV.VINMapping" {
+        nchar VINCode
+        int VehicleConfigurationID
+        timestamp timestamp
+    }
+    "DMV.vValidYear" {
+        int Year
+    }
+    "DMV.vValidYearMake" {
+        int Year
+        int MakeId
+    }
+    "DMV.vValidYearSubModel" {
+        int Year
+        int SubModelId
+    }
+    "DMV.vValidYearSubModelBodyEngine" {
+        int Year
+        int SubModelId
+        int BodyStyleId
+        int EngineId
+    }
+    "DMV.vValidYearSubmodelBodyStyle" {
+        int Year
+        int SubModelId
+        int BodyStyleId
+    }
+    "DMV.vValidYearSubmodelBrake" {
+        int Year
+        int SubModelId
+        int BrakeId
+    }
+    "DMV.vValidYearSubmodelDrive" {
+        int ShopMgtVehicleConfigId
+        int SubModelId
+        int DriveId
+        int Year
+    }
+    "DMV.vValidYearSubmodelGvw" {
+        int Year
+        int SubModelId
+        int GVWId
+    }
+    "DMV.vValidYearSubmodelTransmission" {
+        int Year
+        int SubModelId
+        int TransmissionId
+    }
+    "DMV.Year" {
+        int Year
+        timestamp timestamp
+    }
+    "DMV.VehicleConfigurationMapping" ||--o{ "DMV.AAIAIdMapping" : "FK_AAIAIdMapping_VehicleConfigurationMapping"
+    "DMV.VehicleConfigurationMapping" ||--o{ "DMV.ACESIdMapping" : "FK_ACESIdMapping_VehicleConfigurationMapping"
+    "DMV.Make" ||--o{ "DMV.Model" : "FK_Model_Make"
+    "DMV.BodyStyle" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_BodyStyle"
+    "DMV.Brake" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Brake"
+    "DMV.Drive" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Drive"
+    "DMV.Engine" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Engine"
+    "DMV.GVW" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_GVW"
+    "DMV.Make" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Make"
+    "DMV.Model" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Model"
+    "DMV.SubModel" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_SubModel"
+    "DMV.Transmission" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Transmission"
+    "DMV.Year" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Year"
+    "DMV.Model" ||--o{ "DMV.SubModel" : "FK_SubModel_Model"
+    "DMV.ShopMgtVehicleConfig" ||--o{ "DMV.VehicleConfigurationMapping" : "FK_VehicleConfigurationMapping_ShopMgtVehicleConfig"
+    "DMV.VehicleConfigurationMapping" ||--o{ "DMV.VINMapping" : "FK_VINMapping_VehicleConfigurationMapping"
+    %% Cross-schema: "DMV.Make" ||--o{ "SM.CannedJob" : "FK_CannedJob_Make"
+    %% Cross-schema: "DMV.SubModel" ||--o{ "SM.CannedJob" : "FK_CannedJob_SubModel"
+    %% Cross-schema: "DMV.BodyStyle" ||--o{ "SM.Vehicle" : "FK_Vehicle_BodyStyle"
+    %% Cross-schema: "DMV.Brake" ||--o{ "SM.Vehicle" : "FK_Vehicle_Brake"
+    %% Cross-schema: "DMV.Drive" ||--o{ "SM.Vehicle" : "FK_Vehicle_Drive"
+    %% Cross-schema: "DMV.Engine" ||--o{ "SM.Vehicle" : "FK_Vehicle_Engine"
+    %% Cross-schema: "DMV.GVW" ||--o{ "SM.Vehicle" : "FK_Vehicle_Gvw"
+    %% Cross-schema: "DMV.Make" ||--o{ "SM.Vehicle" : "FK_Vehicle_Make"
+    %% Cross-schema: "DMV.SubModel" ||--o{ "SM.Vehicle" : "FK_Vehicle_SubModel"
+    %% Cross-schema: "DMV.Transmission" ||--o{ "SM.Vehicle" : "FK_Vehicle_Transmission"
+    %% Cross-schema: "DMV.Year" ||--o{ "SM.Vehicle" : "FK_Vehicle_Year"

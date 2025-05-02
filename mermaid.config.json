@@ -3,5 +3,11 @@
     "er": {
       "maxEntities": 1000,
       "maxTextSize": 1000000
-    }
+    },
+    "puppeteerConfig": {
+      "deviceScaleFactor": 2
+    },
+    "theme": "default",
+    "width": 20000,
+    "height": 20000
   }

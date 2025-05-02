@@ -1,0 +1,3337 @@
+erDiagram
+    "ARC.TextMessage" {
+        int Id
+        int TextMessageId
+        int CustId
+        nvarchar Body
+        bigint ExternalId
+        int Type
+        nvarchar PhoneNumber
+        int Direction
+        int Status
+        nvarchar ErrorMessage
+        int ErrorCode
+        datetime Date
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "DMV.AAIAIdMapping" {
+        int AAIAId
+        int VehicleConfigurationId
+        timestamp timestamp
+    }
+    "DMV.ACESIdMapping" {
+        int AcesID
+        int AcesEngineID
+        int VehicleConfigurationID
+        int AcesBaseID
+        int AcesEngineConfigID
+        int AcesSubModelID
+    }
+    "DMV.BodyStyle" {
+        int BodyStyleId
+        nvarchar Name
+        timestamp timestamp
+    }
+    "DMV.Brake" {
+        int BrakeId
+        nvarchar BrakeSystemType
+        timestamp timestamp
+    }
+    "DMV.Drive" {
+        int DriveId
+        nvarchar DriveType
+        timestamp timestamp
+    }
+    "DMV.Engine" {
+        int EngineId
+        real DisplacementCID
+        real DisplacementLiters
+        int NumberOfCylinders
+        int ValvesPerCylinder
+        nvarchar FuelDeliveryMethodType
+        nvarchar FuelType
+        nvarchar FuelControlType
+        nvarchar HeadConfigurationType
+        nvarchar BoostType
+        nvarchar IgnitionSystem
+        nvarchar VinCode
+        nvarchar FuelSystem
+        nvarchar BlockConfiguration
+        nvarchar FuelSystemConfiguration
+        timestamp timestamp
+    }
+    "DMV.GVW" {
+        int GVWId
+        nvarchar GVWText
+        timestamp timestamp
+    }
+    "DMV.Make" {
+        int MakeId
+        nvarchar Name
+        timestamp timestamp
+    }
+    "DMV.Model" {
+        int ModelId
+        int MakeId
+        nvarchar Name
+        timestamp timestamp
+    }
+    "DMV.ShopMgtVehicleConfig" {
+        int ShopMgtVehicleConfigId
+        int Year
+        int MakeId
+        int ModelId
+        int SubModelId
+        int BodyStyleId
+        int EngineId
+        int BrakeId
+        int TransmissionId
+        int GVWId
+        int DriveId
+    }
+    "DMV.SubModel" {
+        int SubModelId
+        int ModelId
+        nvarchar Name
+        int DMVId
+        timestamp timestamp
+    }
+    "DMV.Transmission" {
+        int TransmissionId
+        nvarchar TransmissionType
+        nvarchar ManufacturerCode
+        nvarchar ControlType
+        bit ElectronicControlled
+        int NumberOfSpeeds
+        timestamp timestamp
+    }
+    "DMV.VehicleConfigurationMapping" {
+        int VehicleConfigurationId
+        int ShopMgtVehicleConfigId
+    }
+    "DMV.Version" {
+        datetime DMVVersionDate
+        int VersionNumber
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "DMV.VINMapping" {
+        nchar VINCode
+        int VehicleConfigurationID
+        timestamp timestamp
+    }
+    "DMV.vValidYear" {
+        int Year
+    }
+    "DMV.vValidYearMake" {
+        int Year
+        int MakeId
+    }
+    "DMV.vValidYearSubModel" {
+        int Year
+        int SubModelId
+    }
+    "DMV.vValidYearSubModelBodyEngine" {
+        int Year
+        int SubModelId
+        int BodyStyleId
+        int EngineId
+    }
+    "DMV.vValidYearSubmodelBodyStyle" {
+        int Year
+        int SubModelId
+        int BodyStyleId
+    }
+    "DMV.vValidYearSubmodelBrake" {
+        int Year
+        int SubModelId
+        int BrakeId
+    }
+    "DMV.vValidYearSubmodelDrive" {
+        int ShopMgtVehicleConfigId
+        int SubModelId
+        int DriveId
+        int Year
+    }
+    "DMV.vValidYearSubmodelGvw" {
+        int Year
+        int SubModelId
+        int GVWId
+    }
+    "DMV.vValidYearSubmodelTransmission" {
+        int Year
+        int SubModelId
+        int TransmissionId
+    }
+    "DMV.Year" {
+        int Year
+        timestamp timestamp
+    }
+    "DPR.CatalogsDataExchange" {
+        int ExchangeId
+        nvarchar CatalogName
+        int RepairOrderId
+        int PurchaseOrderId
+        nvarchar VendorInfo
+        nvarchar VehicleInfo
+        nvarchar DataTransfered
+        nvarchar DataReceived
+        datetime DateRecorded
+        int ActionType
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "QBI.PackageMapping" {
+        int PackageMappingId
+        int PackageID
+        int OriginalId
+        nvarchar OriginatingTableName
+    }
+    "QBI.PartKitMapping" {
+        int PartKitMappingId
+        int PartKitId
+        int OriginalId
+        nvarchar OriginatingTableName
+    }
+    "QBI.PaymentMapping" {
+        int PaymentMappingId
+        int PaymentId
+        int OriginalId
+        nvarchar OriginatingTableName
+    }
+    "SM.AccountClass" {
+        int AccountClassId
+        nvarchar AccountType
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Addresses" {
+        int AddressId
+        int AddressTypeId
+        nvarchar Company
+        nvarchar Address
+        nvarchar City
+        nvarchar State
+        nvarchar ZipCode
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.AddressType" {
+        int AddressTypeId
+        nvarchar AddressTypeName
+        timestamp timestamp
+        int RecordVersion
+    }
+    "SM.Alert" {
+        int AlertId
+        int ConnectedVehicleProviderId
+        int ScheduleId
+        int QuickCloseId
+        decimal Longitude
+        decimal Latitude
+        varchar DTC
+        int Status
+        int Mileage
+        int MileageUnits
+        datetime Resolved
+        datetime Submitted
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.AlternatePartPrice" {
+        int AlternatePartPriceId
+        int PartId
+        int PartDiscountDescriptionId
+        decimal Price
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.AttachedPart" {
+        int AttachedPartId
+        int PartId
+        int PartIdAttached
+        decimal Qty
+        bit Prompt
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.CannedJob" {
+        int CannedJobId
+        nvarchar Name
+        nvarchar Description
+        int CategoryId
+        int Year
+        int MakeId
+        int SubModelId
+        bit InQuickMenu
+        timestamp timestamp
+        nvarchar Make
+        nvarchar Model
+        int VehicleClass
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.CannedJobLineItemSequence" {
+        int CannedJobId
+        int LineItem
+        int Sequence
+        timestamp timestamp
+        int CannedJobLineItemSequenceId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.CannedJobPartKitSequence" {
+        int CannedJobId
+        int PartKitId
+        int Sequence
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.CatalogLink" {
+        int CatalogLinkId
+        nvarchar Name
+        timestamp timestamp
+        nvarchar DisplayName
+        nvarchar InterfaceVersion
+        nvarchar AuthCode
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.CatalogVehicleAttributes" {
+        int VehicleId
+        nchar CatKey
+        nchar CatValue
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.CatalogVehicleLink" {
+        int CatalogLinkId
+        int VehicleId
+        nvarchar Value
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Category" {
+        int CategoryId
+        nvarchar Description
+        bit Display
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ClockedJob" {
+        int Id
+        int LaborItemId
+        int EmployeeId
+        datetime Start
+        datetime EndDate
+        datetime MarkedComplete
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ClockedShift" {
+        int Id
+        int EmployeeId
+        datetime Start
+        datetime EndDate
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.CommissionType" {
+        int CommissionTypeId
+        nvarchar Description
+        timestamp timestamp
+        int RecordVersion
+    }
+    "SM.Component" {
+        int ComponentId
+        nvarchar Name
+        nvarchar Description
+        bit Visible
+        int MessageInterval
+        int ParentId
+        int RecordVersion
+        datetime2 LastChangeDate
+        nvarchar OfflineMessage
+    }
+    "SM.ComponentState" {
+        int ComponentStateId
+        int ComponentId
+        int Status
+        nvarchar Message
+        datetime EventTime
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ConnectedVehicleProvider" {
+        int ConnectedVehicleProviderId
+        nvarchar SubProgram
+        nvarchar Program
+        int CustId
+        int VehicleId
+        nvarchar Vin
+        int Status
+        datetime Received
+        datetime StatusChanged
+        xml XmlData
+        int RecordVersion
+        datetime2 LastChangeDate
+        nvarchar RegistrationId
+    }
+    "SM.CouponItem" {
+        int LineItemId
+        decimal LaborDiscountAmount
+        decimal PartDiscountAmount
+        bit IsPercentage
+        timestamp timestamp
+        int CouponId
+        money ActualLaborDiscount
+        money ActualPartsDiscount
+        int LaborAccountClassId
+        int PartsAccountClassId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.CustomerAddresses" {
+        int AddressId
+        int CustID
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.CustomerEmails" {
+        int Id
+        int CustId
+        int EmailId
+        int SortOrder
+        bit IsSelected
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.CustomerPaymentAccount" {
+        int Id
+        int AccountClassId
+        int CustId
+        nvarchar ProcessorIdentifier
+        datetime Modified
+        nvarchar Name
+        nvarchar Token
+        nvarchar Data
+        timestamp RowVersion
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.CustomerPhones" {
+        int PhoneId
+        int CustId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Customers" {
+        int CustId
+        int TitleId
+        nvarchar FirstName
+        nvarchar LastName
+        datetime DOB
+        nvarchar SpouseName
+        nvarchar JobTitle
+        int PartLevel
+        int LaborLevel
+        bit ChargeOK
+        nvarchar Remarks
+        nvarchar ResaleNum
+        bit IncludeInCRMCampaign
+        datetime FeeAssessmentDate
+        money CurrentFeeAmount
+        bit NoLateFee
+        datetime NewCustFollowUpDate
+        bit EMailReminder
+        int RefById
+        int RefTypeId
+        bit TaxExempt
+        datetime LastVisited
+        datetime FirstVisited
+        int DeletedRepairOrderCount
+        decimal RepairOrderAdjustment
+        decimal BalanceDue
+        decimal CreditAmt
+        bit IsDeleted
+        timestamp timestamp
+        bit IsFromSchedule
+        nvarchar MembershipNo
+        int RecordVersion
+        bit SMSAllowed
+        datetime2 LastChangeDate
+        nvarchar FlagText
+        nvarchar EmailAddress
+        int FleetVendorId
+    }
+    "SM.CustomerTaxes" {
+        int CustId
+        int TaxId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.CustomerYTDAdjustment" {
+        int CustomerYTDAdjustmentId
+        int CustId
+        money YTDAdjustment
+        datetime DateAdjusted
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.CustTitle" {
+        int TitleId
+        nvarchar Title
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.DbVersion" {
+        int DbVersionId
+        nvarchar DbVersionNumber
+        timestamp timestamp
+        datetime UpgradeDate
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.DecodedVehicleIds" {
+        int VehicleId
+        timestamp TimeStamp
+        int DecodedVehicleIdsId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Devices" {
+        int DeviceID
+        nvarchar DeviceName
+        nvarchar MacAddress
+        datetime DateAdded
+        bit IsAuthorized
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Disclaimer" {
+        int RO_Phase
+        nvarchar Disclaimer
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.DiscountAmountType" {
+        int AmountTypeId
+        nvarchar Description
+        timestamp timestamp
+        int RecordVersion
+    }
+    "SM.DiscountCoupon" {
+        int CouponId
+        nvarchar Code
+        nvarchar Description
+        datetime StartDate
+        datetime EndDate
+        decimal PartsOff
+        decimal LaborOff
+        bit IsDeleted
+        int AmountTypeId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Email" {
+        int Id
+        int EmailTypeId
+        nvarchar Email
+        nvarchar Description
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.EmailTemplate" {
+        int EmailTemplateId
+        nvarchar Type
+        nvarchar Template
+        int RecordVersion
+        datetime2 LastChangeDate
+        nvarchar Subject
+    }
+    "SM.EmailType" {
+        int Id
+        nvarchar Name
+        bit IsSystem
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Employee" {
+        int EmployeeId
+        nvarchar LastName
+        nvarchar FirstName
+        int EmployeeTypeId
+        nvarchar AccountingId
+        decimal CommParts
+        decimal CommLabor
+        decimal CommSublet
+        money WageAmount
+        decimal PayPeriodHours
+        int PayTypeId
+        int CommTypeParts
+        int CommTypeLabor
+        int CommTypeSublet
+        bit Deleted
+        timestamp timestamp
+        int ColorValue
+        nvarchar Notes
+        datetime DOB
+        bit Inactive
+        nvarchar EmailAddress
+        datetime HiredDate
+        datetime LastPayRaiseDate
+        datetime DischargedDate
+        int RecordVersion
+        datetime2 LastChangeDate
+        nvarchar Username
+        nvarchar Password
+    }
+    "SM.EmployeeAddresses" {
+        int AddressId
+        int EmployeeId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.EmployeeHours" {
+        int EmployeeHoursId
+        int EmployeeId
+        int DayOfWeek
+        time StartTime
+        time EndTime
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.EmployeePhones" {
+        int PhoneId
+        int EmployeeId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.EmployeeType" {
+        int EmployeeTypeId
+        nvarchar Description
+        timestamp timestamp
+        int RecordVersion
+    }
+    "SM.EndOfDayReports" {
+        int ReportId
+        bit IsTagged
+        int EndOfDayReportsId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.EPayTransaction" {
+        int Id
+        int PaymentId
+        int RepairOrderId
+        int CustId
+        int AccountClassId
+        nvarchar EPayTransactionId
+        varchar EPayOrderId
+        decimal Amount
+        varchar Processor
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ErrorLog" {
+        int ErrorLogId
+        int ErrorNumber
+        nvarchar ErrorMessage
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Estimate" {
+        int EstimateId
+        int RepairOrderId
+        money EstimatedLaborCost
+        money EstimatedPartsCost
+        decimal EstimatedHours
+        money EstimatedTaxAmount
+        money EstimatedHazMatCost
+        money EstShopSuppliesCost
+        money EstimatedDiscount
+        timestamp timestamp
+        money EstimatedTireFeeCost
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ExtractionStatus" {
+        int ExtractionStatusId
+        nvarchar ProductName
+        smallint InitialExtractDone
+        binary LastExtractionStamp
+        binary TempExtractionStamp
+    }
+    "SM.FeeSetting" {
+        int FeeSettingId
+        nvarchar FeeName
+        bit Enabled
+        nvarchar Description
+        int AccountClassId
+        nchar CalculateMode
+        nchar CalculateType
+        nchar TaxableType
+        decimal MinValue
+        decimal MaxValue
+        decimal Value
+        nvarchar ApplyRule
+        decimal ApplyRuleValue
+        timestamp RowVersion
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.FeeTransaction" {
+        int FeeTransactionId
+        int CustomerId
+        decimal Amount
+        int AccountClassId
+        datetime TransactionDate
+        decimal FeeBalance
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.FleetVendor" {
+        int Id
+        int ParentId
+        int CustId
+        nvarchar Name
+        nvarchar ShortName
+        nvarchar AccountNumber
+        int Type
+        int FleetVendorProviderId
+        nvarchar Note
+        nvarchar BillingTerms
+        nvarchar BillingAttention
+        int BillingAddressId
+        nvarchar BillingFax
+        nvarchar BillingUrl
+        nvarchar PaymentMethod
+        decimal ApprovalLimit
+        int DueDate
+        bit TermsOnInvoice
+        bit TermsOnBalanceDue
+        bit DueDateOnInvoice
+        bit DueDateOnBalanceDue
+        int OverrideAddressInvoice
+        int OverrideAddressBalanceDue
+        nvarchar ProviderRegistrationUrl
+        nvarchar VendorCode
+        timestamp RowVersion
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.FleetVendorContact" {
+        int Id
+        int FleetVendorId
+        nvarchar Name
+        nvarchar Note
+        nvarchar Email
+        nvarchar Phone
+        nvarchar Extension
+        timestamp RowVersion
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Followup" {
+        int FollowupType
+        nvarchar Description
+        nvarchar Text
+        int FollowupId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.FollowupType" {
+        int Id
+        nvarchar Description
+        int RecordVersion
+    }
+    "SM.GLAccounts" {
+        int GLAccountId
+        int AccountClassId
+        nvarchar GLCode
+        nvarchar Description
+        int EntryTypeId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.GLEntryTypes" {
+        int EntryTypeId
+        nvarchar EntryTypeDescription
+        timestamp timestamp
+        int RecordVersion
+    }
+    "SM.GroupAssociation" {
+        int GroupId
+        int CustId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Groups" {
+        int GroupId
+        nvarchar Name
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Inspection" {
+        int InspectionId
+        nvarchar Name
+        int RepairOrderId
+        nvarchar Inspection
+        nvarchar FormatVersion
+        int EmployeeId
+        datetime StartDate
+        datetime EndDate
+        datetime LastModifiedDate
+        nvarchar SelectedState
+        int StatusId
+        timestamp RowVersion
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.InspectionImage" {
+        int InspectionImageId
+        int InspectionId
+        bigint RemoteFileId
+        nvarchar Url
+        nvarchar Comment
+        nvarchar JsonPathArray
+        timestamp RowVersion
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.InspectionShare" {
+        int InspectionShareId
+        int InspectionId
+        bigint DataFileId
+        bigint ShareFileId
+        nvarchar ShareUrl
+        nvarchar Filename
+        datetime Date
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.InspectionTemplate" {
+        int InspectionTemplateId
+        nvarchar Name
+        nvarchar Template
+        nvarchar FormatVersion
+        bit StockTemplate
+        int Version
+        timestamp RowVersion
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Inventory" {
+        int InventoryId
+        int PartId
+        decimal OnHand
+        decimal OnOrder
+        nvarchar Location
+        datetime LastSold
+        decimal CommittedQty
+        int ConditionId
+        int SupercededBy
+        decimal RestockQty
+        decimal OrderPoint
+        int CoreQty
+        bit PayCommission
+        decimal TotalCost
+        decimal LastCost
+        decimal PriorToLastCost
+        timestamp timestamp
+        int RecordVersion
+        decimal AvailableQty
+        datetime2 LastChangeDate
+    }
+    "SM.InventoryCondition" {
+        int ConditionId
+        nvarchar Name
+        timestamp timestamp
+        int RecordVersion
+    }
+    "SM.InventoryTransaction" {
+        int InventoryTransactionId
+        int TransactionTypeId
+        int VendorId
+        decimal Cost
+        decimal QuantityDelta
+        datetime TransactionDate
+        datetime OrderDate
+        datetime ReceiveDate
+        nvarchar Reason
+        int PurchaseOrderId
+        int PartId
+        decimal QuantityBeforeTransaction
+        decimal QuantityAfterTransaction
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.InvoiceStatus" {
+        int InvoiceStatusId
+        varchar Description
+        timestamp timestamp
+        int RecordVersion
+    }
+    "SM.LaborItem" {
+        int LaborItemId
+        int LineItemId
+        int LaborRateDescriptionId
+        bit IsUserEnteredLaborRate
+        nvarchar WorkPerformed
+        decimal HoursCharged
+        nvarchar Symptom
+        int ComeBackInvoice
+        decimal PartsEstimate
+        bit IsMPlgItem
+        bit IsChangedMPlgItem
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+        nvarchar VmrsJson
+    }
+    "SM.LaborRateDescription" {
+        int LaborRateDescriptionId
+        nvarchar Description
+        bit DefaultLaborRate
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.LaborRateSnapshots" {
+        int RepairOrderId
+        int LaborRateDescriptionId
+        datetime VersionDate
+        int LaborRateVersionId
+        nvarchar Description
+        money LaborRate
+        bit IsCurrent
+    }
+    "SM.LaborRateVersion" {
+        int LaborRateVersionId
+        int LaborRateDescriptionId
+        money LaborRate
+        datetime VersionDate
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.LineItem" {
+        int LineItemId
+        int AcctClassId
+        int CategoryId
+        nvarchar Description
+        money Cost
+        money Sale
+        bit TaxExempt
+        bit NoCommission
+        bit FixedCommission
+        int OrderRevisionId
+        int CannedJobId
+        timestamp timestamp
+        money LaborSale
+        money PartSale
+        money PartOnlySale
+        money LaborOnlySale
+        money SubletSale
+        money PackageSale
+        bit TireFee
+        int ParentLineItemId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.LineItemTaxes" {
+        int LineItemId
+        int TaxId
+        money TaxCharged
+        money TaxedTaxes
+        money TaxRate
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.LineItemTechs" {
+        int LineItemTechsID
+        int LineItemId
+        int EmployeeId
+        decimal HoursActual
+        decimal HoursPay
+        money Commission
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Lock" {
+        int LockId
+        int RepairOrderId
+        int OrderRevisionId
+        varchar ComputerName
+        datetime CreateDate
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Markup" {
+        int MarkupId
+        decimal MaxRange
+        decimal Percentage
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.NoteItem" {
+        int NoteItemId
+        int LineItemId
+        nvarchar NoteText
+        bit PrintOnOrder
+        bit TechObservation
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Notification" {
+        int NotificationId
+        nvarchar NotificationType
+        datetime2 NotificationDateUTC
+        datetime2 ProcessedDateUTC
+        nvarchar Data
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.OrderRevision" {
+        int OrderRevisionId
+        int RepairOrderId
+        int SubEstimateNumber
+        datetime RevisionDate
+        datetime TimeOfCall
+        nvarchar InitiatedBy
+        int WriterId
+        nvarchar AuthorizedBy
+        nvarchar NumberCalled
+        nvarchar Reason
+        money CurrentEstimate
+        money RevisionAmount
+        int VehicleId
+        money LaborAmount
+        money PartsAmount
+        money SubletAmount
+        timestamp timestamp
+        money HazWasteAmt
+        money ShopSuppliesAmt
+        money TaxAmtHazMat
+        money TaxAmtShopSupplies
+        money DiscountAmt
+        money TaxCharged
+        decimal TireFeeAmount
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Package" {
+        int PackageID
+        int CategoryID
+        int AcctClassID
+        nvarchar Code
+        nvarchar Description
+        datetime StartDate
+        datetime EndDate
+        money Sale
+        bit TaxAsPart
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PackageCommission" {
+        int PackageCommissionID
+        int PackageID
+        money Amount
+        decimal PayHours
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PackageItem" {
+        int PackageItemId
+        int LineItemId
+        bit TaxAsPart
+        nvarchar PackageCode
+        int PackageId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PackageLineSequence" {
+        int PackageItemId
+        int LineItemId
+        int Sequence
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Part" {
+        int PartId
+        nvarchar Description
+        decimal Cost
+        decimal Price
+        bit TaxExempt
+        int CategoryId
+        int AccountClassId
+        nvarchar Comment
+        int ManufacturerId
+        decimal ListPrice
+        bit UserEnteredPrice
+        int KitId
+        bit IsMPLGItem
+        bit IsChangedMPLGItem
+        bit IsCore
+        decimal CoreCost
+        decimal CoreListPrice
+        int PartFeeId
+        bit IsDeleted
+        timestamp timestamp
+        nvarchar Size
+        bit IsTire
+        int RecordVersion
+        datetime2 LastChangeDate
+        nvarchar Metadata
+    }
+    "SM.PartDescription" {
+        int PartDescriptionId
+        nvarchar Code
+        nvarchar Description
+        int CategoryId
+        int VendorId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PartDiscountDescription" {
+        int PartDiscountDescriptionId
+        nvarchar Description
+        bit PartDiscountDefault
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PartDiscountSnapshots" {
+        int RepairOrderId
+        int PartDiscountDescriptionId
+        datetime VersionDate
+        int PartDiscountVersionId
+        nvarchar Description
+        decimal PartDiscount
+        bit IsCurrent
+    }
+    "SM.PartDiscountVersion" {
+        int PartDiscountVersionId
+        int PartDiscountDescriptionId
+        decimal PartDiscount
+        datetime VersionDate
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PartFee" {
+        int PartFeeId
+        int LineItemId
+        bit Prompt
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PartItem" {
+        int PartItemId
+        int LineItemId
+        int PartDiscountDescriptionId
+        bit IsUserEnteredUnitSale
+        bit IsUserEnteredUnitCost
+        decimal Quantity
+        decimal UnitPrice
+        decimal UnitList
+        decimal UnitSale
+        decimal UnitCost
+        nvarchar PartNo
+        int PartId
+        bit IsConfirmed
+        nvarchar VendorCode
+        int VendorId
+        int ManufacturerId
+        nvarchar InvoiceNumber
+        decimal CommissionAmount
+        bit IsCommitted
+        bit IsQuantityConfirmed
+        decimal ConfirmedQuantity
+        int IsPartOrdered
+        bit IsCore
+        bit IsBundledKit
+        bit IsMPlgItem
+        bit IsChangedMPlgItem
+        nvarchar PartType
+        timestamp timestamp
+        nvarchar Size
+        bit IsTire
+        int RecordVersion
+        int CatalogVendorId
+        datetime2 LastChangeDate
+        nvarchar Metadata
+        nvarchar AddedFromSupplier
+        nvarchar PurchasedFromVendor
+        nvarchar PurchasedFromSupplier
+        nvarchar ShippingDescription
+        decimal ShippingCost
+    }
+    "SM.PartKit" {
+        int PartKitID
+        nvarchar Name
+        nvarchar Description
+        decimal ListPrice
+        bit IsTaxable
+        int CategoryID
+        int AccountClassID
+        bit IsBundled
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PartKitParts" {
+        int PartKitPartsID
+        int PartKitID
+        int PartID
+        decimal Quantity
+        bit Prompt
+        timestamp TIMESTAMP
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PartManufacturer" {
+        int ManufacturerId
+        nvarchar Code
+        nvarchar Name
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PartNumber" {
+        int PartNumberId
+        int PartId
+        bit IsBasePart
+        nvarchar PartNumber
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PartTaxAssociation" {
+        int PartId
+        int TaxId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PartVendor" {
+        int PartId
+        int VendorId
+        int Priority
+        timestamp timestamp
+        int PartVendorId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Payment" {
+        int PaymentId
+        int RepairOrderId
+        int RecordNumber
+        int CustomerId
+        datetime PaymentDate
+        varchar CheckData
+        varchar AuthData
+        decimal Amount
+        int InvoiceStatusId
+        bit IsNSF
+        bit IsNSFReversal
+        bit IsFeePayment
+        decimal TotalPayment
+        datetime DeletionDate
+        int PaymentTransactionId
+        int AccountClassId
+        timestamp timestamp
+        int RecordVersion
+        varbinary VerificationData
+        nvarchar ReceiptOne
+        nvarchar ReceiptTwo
+        nvarchar ReceiptThree
+        datetime2 LastChangeDate
+    }
+    "SM.PaymentApproval" {
+        int Id
+        int RepairOrderId
+        int PaymentId
+        nvarchar Data
+        datetime2 NotificationDateTimeUtc
+        datetime2 StatusDateTimeUtc
+        int Status
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PaymentTransaction" {
+        int PaymentTransactionId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PayType" {
+        int PayTypeId
+        nvarchar Description
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PhoneDesc" {
+        int PhoneDescId
+        nvarchar Description
+        timestamp timestamp
+        int RecordVersion
+        int PhoneOrder
+        int DefaultType
+        datetime2 LastChangeDate
+    }
+    "SM.PhoneNum" {
+        int PhoneId
+        int PhoneDescId
+        nvarchar PhoneNum
+        nvarchar Ext
+        bit Display
+        timestamp timestamp
+        nvarchar Note
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.PODetail" {
+        int PODetailId
+        int POMasterId
+        int Sequence
+        int PartId
+        nvarchar PartNumber
+        nvarchar Description
+        decimal Quantity
+        decimal QuantityReceived
+        decimal Cost
+        decimal CoreCost
+        decimal QuantityBackOrder
+        decimal QuantityCancelled
+        bit InventoryPart
+        nvarchar Notes
+        decimal QuantityAvailConf
+        int MfgId
+        nvarchar AltPartNo
+        int AltMfgId
+        int RepairOrderId
+        nvarchar SaveDescription
+        nvarchar WDLineCode
+        nvarchar PartType
+        nvarchar LocationName
+        decimal ListPrice
+        timestamp timestamp
+        nvarchar LocationId
+        nvarchar Size
+        bit IsTire
+        int RecordVersion
+        int CatalogVendorId
+        datetime2 LastChangeDate
+        nvarchar Metadata
+        nvarchar AddedFromSupplier
+        nvarchar PurchasedFromVendor
+        nvarchar PurchasedFromSupplier
+        nvarchar ShippingDescription
+        decimal ShippingCost
+    }
+    "SM.PODetailRevision" {
+        int OrderRevisionId
+        int PODetailId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.POMaster" {
+        int POMasterId
+        int WriterId
+        int VendorId
+        datetime PODate
+        date RequiredDate
+        int POShipViaId
+        nvarchar CommentInternal
+        nvarchar CommentReport
+        decimal TaxTotal
+        decimal PartsTotal
+        decimal PartsReceived
+        bit BackOrder
+        bit IsClosed
+        nvarchar Phone
+        nvarchar PhoneExt
+        bit Taxable
+        int POStateId
+        decimal TaxReceived
+        datetime ClosedDate
+        nvarchar ConfirmNum
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+        nvarchar TrackingNumber
+    }
+    "SM.POShipVia" {
+        int POShipViaId
+        nvarchar Name
+        timestamp timestamp
+        int RecordVersion
+    }
+    "SM.POState" {
+        int POStateId
+        nvarchar Name
+        timestamp timestamp
+        int RecordVersion
+    }
+    "SM.Postcard" {
+        int PostcardId
+        int ReportId
+        nvarchar Description
+        nvarchar Text
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.POTaxes" {
+        int POTaxesId
+        int POMasterId
+        int TaxId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.POTaxSummary" {
+        int POTaxSummaryId
+        int POMasterId
+        int TaxId
+        int TaxRateId
+        money MatlTaxCharged
+        money LaborTaxCharged
+        money TotalTaxCharged
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.QuickClose" {
+        int QuickCloseId
+        int CustId
+        int VehicleId
+        int ServiceWriterId
+        nvarchar CustomerComments
+        nvarchar ShopComments
+        datetime Closed
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ReasonForVisit" {
+        int ReasonForVisitId
+        nvarchar Reason
+        timestamp timestamp
+        bit IsDeleted
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Recommendations" {
+        int RecommendationId
+        int VehicleId
+        datetime RecommendDate
+        nvarchar RecommendText
+        datetime DateEntered
+        int CategoryId
+        datetime FollowUpDate
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RecordNumber" {
+        int RecordNumberId
+        int RepairOrderId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RecycleBin" {
+        int Id
+        datetime DateDeleted
+        int PersistDays
+        nvarchar Name
+        nvarchar Type
+        nvarchar Version
+        nvarchar Data
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ReferralType" {
+        int RefTypeId
+        nvarchar TypeName
+        bit HasCustId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RepairArticleLineItem" {
+        int RepairArticleLineItemId
+        int LineItemId
+        nvarchar ArticleId
+        nvarchar Module
+        nvarchar SubModule
+        nvarchar Title
+        nvarchar Anchor
+        timestamp timestamp
+        nvarchar Uri
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RepairOrder" {
+        int RepairOrderId
+        int RepairOrderPhaseId
+        int CustId
+        int VehicleId
+        int CategoryId
+        int ReasonForVisitId
+        nvarchar Location
+        nvarchar StatusDescription
+        datetime ScheduleDate
+        decimal ScheduledHours
+        datetime PromiseDate
+        bit RoPrinted
+        bit InvoicePrinted
+        datetime TimeIn
+        datetime TimeOut
+        nvarchar Hat
+        datetime DatePosted
+        int OdometerIn
+        int OdometerOut
+        nvarchar ReferenceNumber
+        bit CalculateHazWasteCost
+        bit CalculateShopSuppliesCost
+        decimal TaxAmtHazMat
+        decimal TaxAmtShopSupplies
+        datetime PrintedDate
+        int PartDiscountDescriptionId
+        bit TaxExempt
+        int LaborRateDescriptionId
+        datetime RateVersionDate
+        bit FromQuickEst
+        nvarchar Notes
+        decimal OrderTotal
+        decimal HazWasteAmt
+        decimal ShopSuppliesAmt
+        decimal TotalTaxAmt
+        decimal LaborSale
+        decimal PartsSale
+        decimal DiscountAmt
+        nvarchar Observations
+        bit CreatedAsEstimate
+        money BalanceDueAdjustment
+        timestamp timestamp
+        money MarginPct
+        decimal TireFeeSale
+        decimal EngineHoursIn
+        decimal EngineHoursOut
+        int RecordVersion
+        datetime2 LastChangeDate
+        bigint AppointmentRequestUid
+    }
+    "SM.RepairOrderApproval" {
+        int Id
+        int RepairOrderId
+        nvarchar Data
+        datetime2 StatusDateTimeUtc
+        int Status
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RepairOrderCannedJob" {
+        int RepairOrderCannedJobId
+        int RepairOrderId
+        int CannedJobId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RepairOrderLineItemSequence" {
+        int RepairOrderId
+        int LineItemId
+        int Sequence
+        timestamp timestamp
+        int RepairOrderLineItemSequenceId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RepairOrderPhase" {
+        int RepairOrderPhaseId
+        nvarchar Phase
+        timestamp timestamp
+        int RecordVersion
+    }
+    "SM.RepairOrderShare" {
+        int Id
+        int RepairOrderId
+        bigint DataFileId
+        bigint ShareFileId
+        nvarchar ShareUrl
+        nvarchar Filename
+        datetime Date
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RepairOrderSnapshot" {
+        int Id
+        int RepairOrderId
+        int FleetVendorId
+        xml FleetVendorSnapshot
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RepairOrderStatus" {
+        int RepairOrderStatusId
+        nvarchar StatusDescription
+        bit Flagged
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+        int ForeArgb
+        int BackArgb
+    }
+    "SM.RepairOrderTaxes" {
+        int RepairOrderId
+        int TaxId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RepairOrderTaxSummary" {
+        int RepairOrderId
+        int TaxId
+        int TaxRateId
+        money MatlTaxCharged
+        money LaborTaxCharged
+        money TotalTaxCharged
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RepairOrderTechRates" {
+        int RepairOrderId
+        int EmployeeId
+        int EmployeeType
+        decimal CommParts
+        decimal CommLabor
+        decimal CommSublet
+        decimal WageAmount
+        decimal PayPeriodHours
+        int PayTypeId
+        int CommTypeParts
+        int CommTypeLabor
+        int CommTypeSublet
+        timestamp Timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RepairOrderTechs" {
+        int RepairOrderTechsId
+        int TechnicianId
+        int RepairOrderId
+        int TechRoleId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ReportClass" {
+        int ReportClassId
+        nvarchar Name
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ReportDefinition" {
+        int ReportId
+        nvarchar Title
+        nvarchar Filename
+        int ReportTypeId
+        int ReportClassId
+        bit DisplayShopLogo
+        bit ShowReport
+        int SortIndex
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ReportParams" {
+        int ReportParamsId
+        int ReportId
+        nvarchar ParamName
+        nvarchar ParamVal
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ReportProtection" {
+        int Id
+        int UserId
+        int ReportId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ReportROPrefs" {
+        int ReportROPrefsId
+        int ReportId
+        bit ShowHeader
+        bit ShowComment
+        bit ShowSignature
+        int NumCopies
+        int ROReportType
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ReportsUnclassified" {
+        int ReportsUnclassifiedId
+        int ReportId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ReportType" {
+        int ReportTypeId
+        nvarchar Name
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RevisionLineItemSequence" {
+        int OrderRevisionId
+        int LineItemId
+        int Sequence
+        timestamp timestamp
+        int RevisionLineItemSequenceId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.RevisionTaxSummary" {
+        int OrderRevisionId
+        int TaxId
+        int TaxRateId
+        money MatlTaxCharged
+        money LaborTaxCharged
+        money ShopSuppliesTaxCharged
+        money HazMatTaxCharged
+        money TotalTaxCharged
+        timestamp timestamp
+        int RevisionTaxSummaryId
+        int HazMatLineItemType
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Schedule" {
+        int ScheduleId
+        int CustId
+        int VehicleId
+        int RepairOrderId
+        int StatusId
+        int EmployeeId
+        int ResourceId
+        int ReasonForVisitId
+        int PrimaryCustomerPhoneId
+        datetime StartDate
+        datetime EndDate
+        nvarchar Subject
+        nvarchar Notes
+        bit PrintOnOrder
+        int ReminderDate
+        bit AllDayEvent
+        int CategoryId
+        datetime PromisedDate
+        timestamp Timestamp
+        datetime DropOffDate
+        bit AutoAdjust
+        int RecordVersion
+        int ServiceWriterId
+        nvarchar CustomerNotes
+        bit CustomerNotesPrintOnOrder
+        bit MatchStartTime
+        datetime2 LastChangeDate
+        bigint AppointmentRequestUid
+        nvarchar Source
+        datetime AcceptedStartTime
+        nvarchar ContactMethods
+        nvarchar PreferredContact
+        nvarchar WaitingOption
+    }
+    "SM.ScheduleCannedJob" {
+        int ScheduleCannedJobId
+        int ScheduleId
+        int CannedJobId
+        int CategoryId
+        nvarchar Name
+        nvarchar Description
+        decimal Time
+        money Rate
+        bit IsFinished
+        bit IsCheckedIn
+        timestamp Timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ScheduleResource" {
+        int ResourceId
+        nvarchar Name
+        bit IsActive
+        int ColorValue
+        bit IsDeleted
+        nvarchar BrandName
+        nvarchar Description
+        nvarchar Location
+        nvarchar NickName
+        nvarchar Notes
+        nvarchar SerialNumber
+        nvarchar Size
+        nvarchar WarrantyInformation
+        timestamp Timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ScheduleServiceCategory" {
+        int ScheduleServiceCategoryId
+        nvarchar Description
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ScheduleStatus" {
+        int StatusId
+        int Type
+        nvarchar Code
+        nvarchar Description
+        int Color
+        bit IsActive
+        timestamp Timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ScheduleWaitingOption" {
+        int ScheduleWaitingOptionId
+        nvarchar Display
+        nvarchar Description
+        bit IsWaiting
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.SharedSettings" {
+        nvarchar Key
+        nvarchar Value
+        timestamp timestamp
+        int SharedSettingsId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.SpecialPackage" {
+        int SpecialPackageId
+        nvarchar Description
+        int SpecialPackageCategoryId
+        int SpecialPackageOrdinal
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.SpecialPackageCategory" {
+        int SpecialPackageCategoryId
+        int CategoryOrdinal
+        int SpecialPackageTypeId
+        nvarchar CategoryDescription
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.SpecialPackageLineItemSequence" {
+        int SpecialPackageId
+        int Sequence
+        int LineItemId
+        timestamp timestamp
+        bit UsePackageQuantity
+        int SpecialPackageLineItemSequenceId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.SpecialPackageType" {
+        int SpecialPackageTypeId
+        nvarchar SpecialPackageType
+        int RecordVersion
+    }
+    "SM.StandardNotes" {
+        int StandardNotesId
+        nvarchar Description
+        nvarchar Text
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.StandardSymptom" {
+        int StandardSymptomId
+        nvarchar ShortDescription
+        nvarchar LongDescription
+        nvarchar WorkRequested
+        decimal EstimatedLaborHours
+        money EstimatedLaborCost
+        money EstimatedPartsCost
+        bit UseFixedLaborRate
+        int CategoryId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.SubletItem" {
+        int SubletItemId
+        int LineItemId
+        int VendorId
+        nvarchar WorkPerformed
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Tax" {
+        int TaxId
+        nvarchar Description
+        int CalculationType
+        bit DefaultApplied
+        nvarchar GLCode
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.TaxCalculationTypes" {
+        int CalculationType
+        nvarchar Description
+        timestamp timestamp
+        int RecordVersion
+    }
+    "SM.TaxRates" {
+        int TaxRateId
+        int TaxId
+        datetime VersionDate
+        decimal MatlRate
+        decimal LaborRate
+        timestamp timestamp
+        int StateCalculation
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.TechRole" {
+        int TechRoleId
+        nvarchar Description
+        timestamp timestamp
+        int RecordVersion
+    }
+    "SM.TextMessage" {
+        int TextMessageId
+        int CustID
+        nvarchar Body
+        bigint ExternalId
+        int Type
+        nvarchar PhoneNumber
+        int Direction
+        int Status
+        nvarchar ErrorMessage
+        int ErrorCode
+        datetime Date
+        int RecordVersion
+        datetime2 LastChangeDate
+        int BodySize
+    }
+    "SM.TextTemplate" {
+        int TextTemplateId
+        nvarchar Title
+        nvarchar Type
+        nvarchar Template
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.TextToPay" {
+        int Id
+        int RepairOrderId
+        int RecordNumber
+        int CustId
+        int AccountClassId
+        nvarchar LinkCode
+        decimal PayAmount
+        nvarchar StatusDescription
+        datetime CreatedDate
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.TireMarkup" {
+        int TireMarkupId
+        decimal MaxRange
+        decimal Percentage
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.TransactionType" {
+        int TransactionTypeId
+        nvarchar Description
+        nchar Code
+        timestamp timestamp
+        int RecordVersion
+    }
+    "SM.Users" {
+        int UserId
+        nvarchar Name
+        nvarchar Password
+        nvarchar AccessRights
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.UserVehicleAttributes" {
+        int UserAttributeId
+        int VehicleId
+        nvarchar AttributeName
+        nvarchar AttributeValue
+        bit YMMSelector
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.vBackOrders" {
+        int POMasterId
+        nvarchar Notes
+        nvarchar PartNumber
+        decimal QuantityBackOrder
+        decimal QuantityReceived
+        decimal Quantity
+        nvarchar Description
+        int PODetailId
+    }
+    "SM.vBaseParts" {
+        int PartId
+        nvarchar Description
+        decimal Cost
+        decimal Price
+        bit TaxExempt
+        int CategoryId
+        int AccountClassId
+        nvarchar Comment
+        int ManufacturerId
+        decimal ListPrice
+        bit UserEnteredPrice
+        int KitId
+        bit IsMPLGItem
+        bit IsChangedMPLGItem
+        bit IsCore
+        decimal CoreCost
+        decimal CoreListPrice
+        int PartFeeId
+        bit IsDeleted
+        timestamp timestamp
+        nvarchar PartNumber
+        nvarchar Size
+        bit IsTire
+    }
+    "SM.vClosedPOs" {
+        int POMasterId
+        int PODetailId
+        decimal PartsTotal
+        decimal TaxTotal
+        datetime PODate
+        int POStateId
+        decimal PartsReceived
+        nvarchar ConfirmNum
+        datetime ClosedDate
+        nvarchar PartNumber
+        nvarchar Description
+        decimal QuantityReceived
+        decimal Cost
+        nvarchar VendorName
+        int VendorId
+        nvarchar VendorCode
+        nvarchar PurchasedFromSupplier
+        nvarchar ShippingDescription
+        decimal ShippingCost
+    }
+    "SM.vComebacks" {
+        datetime DatePosted
+        int RecordNumberId
+        int Sequence
+        int LineItemId
+        nvarchar Description
+        int ComeBackInvoice
+        nvarchar WorkPerformed
+        int RepairOrderId
+    }
+    "SM.vCoreWorksheet" {
+        nvarchar PartNumber
+        int PartId
+        nvarchar Description
+        decimal CoreCost
+        decimal CoreListPrice
+        int CoreQty
+        int VendorId
+        nvarchar VendorName
+        nvarchar VendorCode
+    }
+    "SM.vCouponUsage" {
+        int Id
+        nvarchar Coupon
+        nvarchar Description
+        datetime DatePosted
+        int Invoice
+        nvarchar Customer
+        decimal OrderTotal
+        int IsPackage
+        decimal DiscountAmt
+    }
+    "SM.VDoc" {
+        int LocalVDocID
+        int LocalRepairOrderID
+        uniqueidentifier GlobalVDocID
+        datetime DateCreated
+        datetime DateLastOpened
+        datetime DateLastSaved
+        xml SectionCVD
+        xml SectionTrace
+        xml SectionGeneric
+        xml SectionTechview
+        xml SectionPCodes
+        timestamp timestamp
+    }
+    "SM.Vehicle" {
+        int VehicleId
+        int CustId
+        int Year
+        int MakeId
+        int SubModelId
+        int BodyId
+        int EngineId
+        int TransmissionId
+        int BrakeId
+        int DriveTypeId
+        int GVWId
+        int Odometer1
+        int Odometer2
+        real MilesPerDay
+        nvarchar Vin
+        nvarchar MfgDate
+        datetime InspDate
+        datetime LastInDate
+        smallint LastRevision
+        nvarchar UnitNo
+        nvarchar License
+        nvarchar LicenseState
+        int PartLevel
+        int LaborLevel
+        bit UseVehicleLevels
+        nvarchar VehicleMemo
+        bit VehicleMemoPrintOnOrder
+        bit TaxExempt
+        bit IncludeInCRMCampaign
+        nvarchar Color
+        bit Deleted
+        timestamp timestamp
+        int VehicleClass
+        nvarchar DriverName
+        int DriverPhoneId
+        decimal EngineHoursIn
+        decimal EngineHoursOut
+        int RecordVersion
+        int ActiveRecallCount
+        datetime ActiveRecallLastChecked
+        datetime2 LastChangeDate
+        nvarchar FleetNo
+    }
+    "SM.VehicleLocation" {
+        int VehicleLocationId
+        nvarchar Location
+        bit Flagged
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.VehicleNotes" {
+        int VehicleNoteTypeId
+        int VehicleId
+        nvarchar NoteText
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.VehicleNoteTypes" {
+        int VehicleNoteTypeId
+        nvarchar NoteLabel
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.VehicleTaxes" {
+        int VehicleId
+        int TaxId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.VehicleTelemetry" {
+        int VehicleTelemetryId
+        int ConnectedVehicleProviderId
+        decimal Longitude
+        decimal Latitude
+        int Mileage
+        int MileageUnits
+        decimal BatteryVoltage
+        datetime Submitted
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Vendor" {
+        int VendorId
+        nvarchar Name
+        nvarchar Code
+        nvarchar Contact
+        nvarchar Comment
+        decimal Limit
+        nvarchar Terms
+        int AcctClass
+        int VendorTypeId
+        int CatalogLinkId
+        bit Deleted
+        timestamp timestamp
+        nvarchar EmailAddress
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.VendorAddresses" {
+        int VendorId
+        int AddressId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.VendorLink" {
+        int VendorId
+        nvarchar Property
+        nvarchar Value
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.VendorPhones" {
+        int VendorId
+        int PhoneId
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.VendorType" {
+        int VendorTypeId
+        nvarchar Name
+        timestamp timestamp
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.vFollowup" {
+        int RepairOrderId
+        int CustId
+        int VehicleId
+        datetime DatePosted
+        nvarchar LastName
+        nvarchar FirstName
+        bit IncludeInCRMCampaign
+        datetime NewCustFollowUpDate
+        nvarchar Title
+        nvarchar Company
+        nvarchar Address
+        nvarchar City
+        nvarchar State
+        nvarchar ZipCode
+        int Year
+        nvarchar Make
+        nvarchar Model
+        real MilesPerDay
+        nvarchar License
+        nvarchar UnitNo
+        datetime LastInDate
+        nvarchar Engine
+        nvarchar Vin
+        int OdometerIn
+        int OdometerOut
+        datetime InspDate
+        varchar DOB
+        nvarchar EmailAddress
+        decimal BalanceDue
+        int CreditHistory
+    }
+    "SM.vFollowupCustomerPhones" {
+        int CustId
+        nvarchar SpouseName
+        decimal CreditAmt
+        decimal AverageRO
+        decimal YTDTotal
+        decimal LifetimeTotal
+        datetime FirstVisited
+        datetime LastVisited
+        int LifetimeVisits
+        nvarchar PhoneDesc1
+        nvarchar PhoneNum1
+        nvarchar PhoneDesc2
+        nvarchar PhoneNum2
+        nvarchar PhoneDesc3
+        nvarchar PhoneNum3
+        nvarchar PhoneDesc4
+        nvarchar PhoneNum4
+        nvarchar PhoneDesc5
+        nvarchar PhoneNum5
+        nvarchar PhoneDesc6
+        nvarchar PhoneNum6
+        nvarchar PhoneDesc7
+        nvarchar PhoneNum7
+        nvarchar PhoneDesc8
+        nvarchar PhoneNum8
+        nvarchar PhoneDesc9
+        nvarchar PhoneNum9
+        nvarchar PhoneDesc10
+        nvarchar PhoneNum10
+    }
+    "SM.vFollowupCustomerVehicles" {
+        int CustId
+        int VehicleId
+        nvarchar LastName
+        nvarchar FirstName
+        bit IncludeInCRMCampaign
+        datetime NewCustFollowUpDate
+        nvarchar Title
+        nvarchar Company
+        nvarchar ADDRESS
+        nvarchar City
+        nvarchar STATE
+        nvarchar ZipCode
+        nvarchar YEAR
+        nvarchar Make
+        nvarchar Model
+        real MilesPerDay
+        nvarchar License
+        nvarchar UnitNo
+        datetime LastInDate
+        nvarchar Engine
+        int OdometerIn
+        int OdometerOut
+        datetime InspDate
+        nvarchar Vin
+        nvarchar EmailAddress
+        decimal BalanceDue
+        int CreditHistory
+        varchar DOB
+        bit Deleted
+    }
+    "SM.vInventoryOnHand" {
+        nvarchar PartDesc
+        int CategoryId
+        nvarchar CategoryDesc
+        decimal OnHand
+        decimal TotalCost
+        decimal LastCost
+        nvarchar PartNumber
+        int PartId
+        decimal Cost
+    }
+    "SM.vInventoryReturns" {
+        datetime TransactionDate
+        int TransactionTypeId
+        int VendorId
+        decimal Cost
+        decimal QuantityDelta
+        nvarchar VendorName
+        nvarchar PartNumber
+        nvarchar Reason
+        nvarchar Description
+        nchar Code
+        nvarchar VendorCode
+        bit IsDeleted
+    }
+    "SM.vInventorySalesByMonth" {
+        int PartId
+        nvarchar PartNumber
+        int CategoryId
+        nvarchar Category
+        int Month
+        int Year
+        decimal OnHand
+        nvarchar Description
+        decimal Quantity
+    }
+    "SM.vInventoryWorksheet" {
+        nvarchar Location
+        nvarchar PartNumber
+        nvarchar Description
+        decimal OnHand
+        nvarchar Comment
+        nvarchar Category
+    }
+    "SM.vLowInventory" {
+        decimal RestockQty
+        decimal OnHand
+        decimal OnOrder
+        nvarchar PartNumber
+        nvarchar Description
+        decimal PriorToLastCost
+        decimal LastCost
+        decimal OrderPoint
+        decimal CommittedQty
+        decimal ToOrder
+        nvarchar CategoryDesc
+        nvarchar VendorName
+        nvarchar VendorCode
+        int VendorId
+        int PartId
+        int CategoryId
+        nvarchar Code
+        int ManufacturerId
+        nvarchar Location
+    }
+    "SM.vManualQuantityUpdates" {
+        nvarchar PartNumber
+        nvarchar Description
+        datetime TransactionDate
+        int TransactionTypeId
+        decimal QuantityBeforeTransaction
+        decimal QuantityAfterTransaction
+        decimal QuantityDelta
+        nvarchar Reason
+        nchar Code
+        nvarchar TransDescription
+        int PartId
+        bit IsDeleted
+    }
+    "SM.vOpenPOItems" {
+        datetime PODate
+        datetime RequiredDate
+        int POMasterId
+        nvarchar Description
+        int PODetailId
+        nvarchar PartNumber
+        decimal Quantity
+        decimal QuantityReceived
+        bit InventoryPart
+        decimal QuantityCancelled
+        int RepairOrderId
+        int RecordNumberId
+    }
+    "SM.vOpenPOs" {
+        int POMasterId
+        int PODetailId
+        decimal PartsTotal
+        decimal TaxTotal
+        datetime PODate
+        int POStateId
+        decimal PartsReceived
+        date RequiredDate
+        nvarchar ConfirmNum
+        datetime ClosedDate
+        nvarchar PartNumber
+        nvarchar Description
+        decimal Quantity
+        decimal QuantityReceived
+        decimal QuantityBackOrder
+        decimal QuantityCancelled
+        decimal Cost
+        nvarchar VendorName
+        int VendorId
+        nvarchar VendorCode
+        nvarchar ShippingDescription
+        decimal ShippingCost
+        nvarchar PurchasedFromSupplier
+    }
+    "SM.vPartLocations" {
+        nvarchar Location
+        nvarchar PartNumber
+        nvarchar Description
+        int PartId
+    }
+    "SM.vPartsList" {
+        nvarchar PartNumber
+        int PartId
+        nvarchar Description
+        decimal Cost
+        decimal Price
+        int KitId
+        nvarchar Category
+        nvarchar MfgCode
+        decimal OnHand
+        decimal TotalCost
+        decimal LastCost
+        bit IsDeleted
+    }
+    "SM.vPostedPartitems" {
+        int RepairOrderId
+        datetime DatePosted
+        int RecordNumberId
+        int Sequence
+        int LineItemId
+        decimal Cost
+        nvarchar Description
+        decimal Quantity
+        int PartId
+        bit IsCore
+        nvarchar FirstName
+        nvarchar LastName
+        nvarchar Company
+        int VendorId
+        nvarchar VendorCode
+        nvarchar VendorName
+        nvarchar PartNumber
+        decimal RestockQty
+        nvarchar MfrCode
+        bit IsDeleted
+        nvarchar PurchasedFromSupplier
+    }
+    "SM.vRepairOrderBalances" {
+        int RepairOrderId
+        decimal TotalPaid
+        decimal BalanceDue
+    }
+    "SM.vVendorResponse" {
+        nvarchar VendorName
+        nvarchar VendorCode
+        nvarchar PartNumber
+        nvarchar Description
+        nvarchar ConfirmNum
+        datetime OrderDate
+        datetime TransactionDate
+        datetime ReceiveDate
+        int VendorId
+        int PartId
+        decimal QuantityDelta
+        decimal QuantityBeforeTransaction
+        decimal QuantityAfterTransaction
+        int PurchaseOrderId
+        nchar Code
+        int InventoryTransactionId
+    }
+    "SM.vwAllPartsOnRepairOrders" {
+        int RepairOrderId
+        int LineItemId
+    }
+    "SM.vwLaborRateCurrent" {
+        int LaborRateVersionId
+        bit IsCurrent
+    }
+    "SM.vwLineItemTotalTaxes" {
+        money TaxCharged
+        int LineItemId
+    }
+    "SM.vwPartDiscountCurrent" {
+        int PartDiscountVersionId
+        bit IsCurrent
+    }
+    "SM.vwPostedOrders" {
+        int CustId
+        nvarchar PhaseString
+        int RecordNumber
+        datetime DatePosted
+        decimal BalanceDue
+        decimal LaborSale
+        decimal PartsSale
+        decimal TotalTaxAmt
+        decimal HazWasteAmt
+        decimal ShopSuppliesAmt
+        decimal DiscountAmt
+        decimal InvTotal
+        int RepairOrderPhaseId
+        decimal TireFeeSale
+        int RepairOrderId
+        decimal TotalPaymentAmt
+        bit IsDeleted
+        nvarchar FirstName
+        nvarchar LastName
+        varchar Company
+        nvarchar WriterFirstName
+        nvarchar WriterLastName
+    }
+    "SM.vwRoLaborSaleTaxed" {
+        money LaborSalesTaxed
+        int RepairOrderId
+    }
+    "SM.vwRoLaborTaxCharged" {
+        money LaborTaxCharged
+        int RepairOrderId
+    }
+    "SM.vwRoMatlSaleTaxed" {
+        money MatlSalesTaxed
+        int RepairOrderId
+    }
+    "SM.vwRoMatlTaxCharged" {
+        money MatlTaxCharged
+        int RepairOrderId
+    }
+    "SM.vwRoRatesCurrent" {
+        int RepairOrderId
+        bit PartDiscountsCurrent
+        bit LaborRatesCurrent
+        bit TaxRatesCurrent
+    }
+    "SM.vwScheduleCustomerDetails" {
+        int CustId
+        nvarchar FirstName
+        nvarchar LastName
+        nvarchar SpouseName
+        nvarchar Company
+        nvarchar EmailAddress
+        nvarchar Phone1
+        nvarchar Phone2
+        nvarchar CustAddress
+        bit SMSAllowed
+    }
+    "SM.vwScheduleRepairOrderDetails" {
+        int RepairOrderId
+        int RecordNumberId
+        int RepairOrderPhaseId
+        nvarchar Hat
+        decimal OrderHours
+        datetime RepairOrderPromiseDate
+    }
+    "SM.vwScheduleVehicleDetails" {
+        int VehicleId
+        bit Deleted
+        nvarchar License
+        nvarchar Color
+        nvarchar LicenseState
+        real MilesPerDay
+        int Odometer1
+        nvarchar Vin
+        nvarchar UnitNo
+        int Year
+        nvarchar Make
+        nvarchar Model
+        nvarchar SubModel
+        nvarchar Engine
+        nvarchar FleetNo
+    }
+    "SM.vwShopAccountClasses" {
+        varchar Header
+        nvarchar key
+        nvarchar value
+        varchar Description
+    }
+    "SM.vwShopDataReport" {
+        varchar Header
+        nvarchar key
+        nvarchar value
+        varchar Description
+    }
+    "SM.vwShopDefaults" {
+        varchar Header
+        varchar key
+        nvarchar value
+        varchar Description
+    }
+    "SM.vwShopHazMatCost" {
+        varchar Header
+        varchar key
+        nvarchar value
+        varchar Description
+    }
+    "SM.vwShopInfo" {
+        varchar Header
+        nvarchar key
+        nvarchar value
+        varchar Description
+    }
+    "SM.vwShopInvoiceROValidations" {
+        varchar Header
+        varchar key
+        varchar value
+        varchar Description
+    }
+    "SM.vwShopLaborPartDiscount" {
+        varchar Header
+        nvarchar key
+        varchar value
+        varchar Description
+    }
+    "SM.vwShopLateFee" {
+        varchar Header
+        nvarchar key
+        nvarchar value
+        varchar Description
+    }
+    "SM.vwShopMarkupAdd" {
+        varchar Header
+        nvarchar key
+        nvarchar value
+        varchar Description
+    }
+    "SM.vwShopSuppliesCost" {
+        varchar Header
+        varchar key
+        nvarchar value
+        varchar Description
+    }
+    "SM.vwShopTaxInformation" {
+        varchar Header
+        nvarchar key
+        varchar value
+        varchar Description
+    }
+    "SM.vwTaxCurrent" {
+        int TaxRateId
+        bit IsCurrent
+    }
+    "SM.vwTypedCustomerAddresses" {
+        int CustID
+        int AddressId
+        int AddressTypeId
+        nvarchar Company
+        nvarchar Address
+        nvarchar City
+        nvarchar State
+        nvarchar ZipCode
+        nvarchar AddressTypeName
+        timestamp timestamp
+    }
+    "SM.vwVehicleConfigurations" {
+        int VehicleId
+        int VehicleConfigurationId
+    }
+    "SM.ZipCode" {
+        nvarchar Zipcode
+        nvarchar City
+        nvarchar State
+        int ZipCodeId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.ZipCodeAlternate" {
+        nvarchar ZipCode
+        nvarchar City
+        nvarchar State
+        int ZipCodeAlternateId
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "Sync.AgentVariables" {
+        int VariableId
+        nvarchar Key
+        nvarchar Value
+        timestamp timestamp
+    }
+    "Sync.MigrationDocumentStatus" {
+        int DocumentStatusId
+        varchar DocumentStatusDescription
+    }
+    "Sync.MigrationRepository" {
+        int DocumentId
+        varchar DocumentLocalPath
+        bigint DocumentCRC
+        smallint DocumentStatus
+        varchar DocumentType
+        datetime2 LastChangeDate
+    }
+    "Sync.PersistentData" {
+        int Id
+        nvarchar Key
+        datetime2 Value
+    }
+    "Sync.ResumeInfoDetails" {
+        int UpdatesAvailableId
+        int ComponentId
+        int Status
+    }
+    "Sync.SyncDownQueue" {
+        int SyncDownQueueId
+        datetime2 RecordTs
+        nvarchar DataXML
+        uniqueidentifier MessageId
+        int MessageStatus
+    }
+    "Sync.SyncEntityColumnOverrides" {
+        nvarchar Schema
+        nvarchar Table
+        nvarchar Column
+        nvarchar ElementOrAttributeName
+        int SerializationType
+        nvarchar Types
+        bit IsPrimaryKey
+        bit IsForeignKey
+        nvarchar ForeignKeySchema
+        nvarchar ForeignKeyTable
+        bit IsRequired
+        bit Ignored
+        bit IsComputed
+    }
+    "Sync.SyncEntityColumns" {
+        nvarchar Schema
+        nvarchar Table
+        nvarchar Column
+        nvarchar Type
+        nvarchar ElementOrAttributeName
+        int SerializationType
+        bit IsPrimaryKey
+        nvarchar ForeignKeySchema
+        nvarchar ForeignKeyTable
+        bit IsRequired
+        bit IsComputed
+        bigint ColumnOrder
+    }
+    "Sync.SyncEntityObjects" {
+        nvarchar Schema
+        nvarchar Table
+        nvarchar XmlElementName
+        decimal NestingOrder
+        bit IsLinkEntity
+        bit IsPkComputed
+    }
+    "Sync.SyncEntityObjectsOverrides" {
+        nvarchar Schema
+        nvarchar Table
+        nvarchar XmlElementName
+        decimal NestingOrder
+        bit IsLinkEntity
+    }
+    "Sync.SyncQueue" {
+        int SyncQueueId
+        int SyncUpQueueId
+        int SyncDownQueueId
+        int BatchId
+    }
+    "Sync.SyncTables" {
+        int TableID
+        varchar SchemaName
+        varchar TableName
+    }
+    "Sync.SyncUpBatch" {
+        int BatchId
+        smallint BatchStatusId
+        datetime2 InsertDate
+        datetime2 LastChangeDate
+    }
+    "Sync.SyncUpBatchStatus" {
+        smallint BatchStatusId
+        varchar BatchStatusDescription
+    }
+    "Sync.SyncUpQueue" {
+        int RecordId
+        nvarchar SchemaName
+        nvarchar TableName
+        datetime2 RecordTs
+        varchar OperationType
+        nvarchar DataXML
+    }
+    "Sync.UpdatesAvailable" {
+        int UpdatesAvailableId
+        nvarchar FileName
+        nvarchar Path
+        smallint InstallationStatus
+        nvarchar Version
+        datetime2 InstallationDate
+        bigint FileCRC
+        bigint Size
+        nvarchar Dependency
+        int InstallationRetries
+        nvarchar PreviousVersion
+        nvarchar Description
+        smallint ReportStatus
+    }
+    "Sync.UpdatesInstallStatus" {
+        smallint InstallStatusId
+        varchar InstallStatusDescription
+    }
+    "TMP.AppointmentRequest" {
+        bigint AppointmentRequestUid
+        datetime RequestedAppointmentDateTime
+        nvarchar CustomerDetails
+        nvarchar VehicleDetails
+        nvarchar PreferredContactMethod
+        nvarchar GroupName
+        nvarchar ReasonForVisit
+        nvarchar ScheduleWaitingOption
+        nvarchar ScheduleServiceCategories
+        tinyint Status
+        datetime DateAcknowledgedUTC
+        datetime SubmitDateTimeUTC
+        nvarchar CustomerComment
+        nvarchar ShopComment
+        int CustomerId
+        int VehicleId
+        timestamp RowVersion
+        tinyint Type
+        nvarchar FleetDetails
+        nvarchar SupplementalProperties
+    }
+    "TMP.CacheOnlineCatalog" {
+        int Id
+        datetime Expiration
+        nvarchar Item
+    }
+    "TMP.CommissionLineItems" {
+        int RepairOrderId
+        int Invoice
+        datetime DatePosted
+        int WriterId
+        nvarchar WriterName
+        int LineItemId
+        int CustId
+        nvarchar CustomerName
+        nvarchar LineItemDescription
+        money Sale
+        money Cost
+        bit NoCommission
+        bit FixedCommission
+        int CategoryId
+        money HoursCharged
+        int LineItemType
+        bit TreatAsPart
+        int VehicleId
+        nvarchar YMM
+        int WriterCommTypeLabor
+        money WriterCommLabor
+        int WriterCommTypeParts
+        money WriterCommParts
+        int WriterCommTypeSublet
+        money WriterCommSublet
+        bit MultipleTechs
+        bit WriterDeleted
+        int OrderRevisionId
+    }
+    "TMP.CommissionLineItemTechs" {
+        int RepairOrderId
+        int Invoice
+        datetime DatePosted
+        int WriterId
+        nvarchar WriterName
+        int LineItemId
+        int CustomerId
+        nvarchar CustomerName
+        nvarchar LineItemDescription
+        money Sale
+        money Cost
+        bit NoCommission
+        bit FixedCommission
+        int CategoryId
+        money HoursCharged
+        int LineItemType
+        bit TreatAsPart
+        int VehicleId
+        nvarchar YMM
+        int WriterCommTypeLabor
+        money WriterCommLabor
+        int WriterCommTypeParts
+        money WriterCommParts
+        int WriterCommTypeSublet
+        money WriterCommSublet
+        bit MultipleTechs
+        int EmployeeId
+        money HoursActual
+        money LaborHours
+        money FixedCommValue
+        nvarchar TechName
+        money CommissionParts
+        money CommissionLabor
+        money CommissionTypeParts
+        money CommissionTypeLabor
+        money HourlyRate
+        bit EmployeeDeleted
+        bit WriterDeleted
+    }
+    "TMP.CommissionRepairOrders" {
+        int RepairOrderId
+        datetime DatePosted
+        int Invoice
+        int CustId
+        nvarchar CustomerName
+        int VehicleId
+        nvarchar YMM
+        int WriterId
+        nvarchar WriterName
+        int WriterCommTypeLabor
+        money WriterCommLabor
+        int WriterCommTypeParts
+        money WriterCommParts
+        int WriterCommTypeSublet
+        money WriterCommSublet
+        bit WriterDeleted
+        int OrderRevisionId
+    }
+    "TMP.EmployeeLineCommissions" {
+        int EmployeeId
+        int EmployeeType
+        int LineItemType
+        int LineItemId
+        money CommissionRate
+        int CommissionBasis
+        money LaborHours
+        money Salary
+        money CommissionPaid
+        money Sale
+        nvarchar LineItemDescription
+        int Invoice
+        datetime DatePosted
+        nvarchar TechName
+        int RepairOrderId
+        int CategoryId
+        nvarchar YMM
+        int CommissionTypeParts
+        int CommissionTypeLabor
+        int CommissionTypeSublet
+        money CommissionParts
+        money CommissionLabor
+        money CommissionSublet
+        bit EmployeeDeleted
+        nvarchar CustomerName
+        money HoursActual
+        money HoursCharged
+        bit MultipleTechs
+        bit TreatAsPart
+        bit NoCommission
+        bit HasCommission
+    }
+    "TMP.LineItemCosts" {
+        int LineItemId
+        int LineItemType
+        money Salary
+        money Commission
+        money EmployeeCosts
+        money MaterialCosts
+        money TotalCosts
+        money Sale
+        money Profit
+        int WriterId
+    }
+    "TMP.LoggedPhoneNumbers" {
+        int PhoneId
+        int CustId
+        nvarchar PhoneNum
+        nvarchar Ext
+        varchar Description
+    }
+    "TMP.MessageQueueSetting" {
+        int Id
+        date LastCleaned
+    }
+    "TMP.MROOOLIST" {
+        datetime LastAccess
+        int RepairOrderId
+    }
+    "TMP.ReservePONumber" {
+        int Id
+        int ReservePONumberGroupId
+    }
+    "TMP.ReservePONumberGroup" {
+        int Id
+        bit Freed
+        datetime Created
+    }
+    "TMP.RevisionShare" {
+        int Id
+        int OrderRevisionId
+        bigint DataFileId
+        bigint ShareFileId
+        nvarchar ShareUrl
+        nvarchar Filename
+        datetime Date
+    }
+    "TMP.WebPortalUserSession" {
+        bigint Id
+        int UserId
+        uniqueidentifier SessionId
+        datetime2 IssuedAtUTC
+        datetime2 ExpiresUTC
+        datetime2 CreatedUTC
+    }
+    "SM.Customers" ||--o{ "ARC.TextMessage" : "FK_ARC_TextMessage_Customers"
+    "DMV.VehicleConfigurationMapping" ||--o{ "DMV.AAIAIdMapping" : "FK_AAIAIdMapping_VehicleConfigurationMapping"
+    "DMV.VehicleConfigurationMapping" ||--o{ "DMV.ACESIdMapping" : "FK_ACESIdMapping_VehicleConfigurationMapping"
+    "DMV.Make" ||--o{ "DMV.Model" : "FK_Model_Make"
+    "DMV.BodyStyle" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_BodyStyle"
+    "DMV.Brake" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Brake"
+    "DMV.Drive" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Drive"
+    "DMV.Engine" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Engine"
+    "DMV.GVW" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_GVW"
+    "DMV.Make" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Make"
+    "DMV.Model" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Model"
+    "DMV.SubModel" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_SubModel"
+    "DMV.Transmission" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Transmission"
+    "DMV.Year" ||--o{ "DMV.ShopMgtVehicleConfig" : "FK_ShopMgtVehicleConfig_Year"
+    "DMV.Model" ||--o{ "DMV.SubModel" : "FK_SubModel_Model"
+    "DMV.ShopMgtVehicleConfig" ||--o{ "DMV.VehicleConfigurationMapping" : "FK_VehicleConfigurationMapping_ShopMgtVehicleConfig"
+    "DMV.VehicleConfigurationMapping" ||--o{ "DMV.VINMapping" : "FK_VINMapping_VehicleConfigurationMapping"
+    "SM.AddressType" ||--o{ "SM.Addresses" : "FK_Addresses_AddressType"
+    "SM.ConnectedVehicleProvider" ||--o{ "SM.Alert" : "FK_Alert_ConnectedVehicleProvider"
+    "SM.QuickClose" ||--o{ "SM.Alert" : "FK_Alert_QuickClose"
+    "SM.Schedule" ||--o{ "SM.Alert" : "FK_Alert_Schedule"
+    "SM.Part" ||--o{ "SM.AlternatePartPrice" : "FK_AlternatePartPrice_Part"
+    "SM.PartDiscountDescription" ||--o{ "SM.AlternatePartPrice" : "FK_AlternatePartPrice_PartDiscountDescription"
+    "SM.Part" ||--o{ "SM.AttachedPart" : "FK_AttachedPart_Part"
+    "SM.Part" ||--o{ "SM.AttachedPart" : "FK_AttachedPart_PartAttached"
+    "SM.Category" ||--o{ "SM.CannedJob" : "FK_CannedJob_Category"
+    "DMV.Make" ||--o{ "SM.CannedJob" : "FK_CannedJob_Make"
+    "DMV.SubModel" ||--o{ "SM.CannedJob" : "FK_CannedJob_SubModel"
+    "SM.CannedJob" ||--o{ "SM.CannedJobLineItemSequence" : "FK_CannedJobLineItemSequence_CannedJob"
+    "SM.LineItem" ||--o{ "SM.CannedJobLineItemSequence" : "FK_CannedJobLineItemSequence_LineItem"
+    "SM.CannedJob" ||--o{ "SM.CannedJobPartKitSequence" : "FK_CannedJobPartKitSequence_CannedJob"
+    "SM.PartKit" ||--o{ "SM.CannedJobPartKitSequence" : "FK_CannedJobPartKitSequence_PartKit"
+    "SM.Vehicle" ||--o{ "SM.CatalogVehicleAttributes" : "FK_CatalogVehicleAttributes_Vehicle"
+    "SM.CatalogLink" ||--o{ "SM.CatalogVehicleLink" : "FK_CatalogVehicleLink_CatalogLink"
+    "SM.Vehicle" ||--o{ "SM.CatalogVehicleLink" : "FK_CatalogVehicleLink_Vehicle"
+    "SM.Employee" ||--o{ "SM.ClockedJob" : "FK_ClockedJob_Employee"
+    "SM.LaborItem" ||--o{ "SM.ClockedJob" : "FK_ClockedJob_LaborItem"
+    "SM.Employee" ||--o{ "SM.ClockedShift" : "FK_ClockedShift_Employee"
+    "SM.Component" ||--o{ "SM.Component" : "FK_Component_Parent"
+    "SM.Component" ||--o{ "SM.ComponentState" : "FK_ComponentState_Component"
+    "SM.Customers" ||--o{ "SM.ConnectedVehicleProvider" : "FK_ConnectedVehicleProvider_Customers"
+    "SM.Vehicle" ||--o{ "SM.ConnectedVehicleProvider" : "FK_ConnectedVehicleProvider_Vehicle"
+    "SM.DiscountCoupon" ||--o{ "SM.CouponItem" : "FK_CouponItem_DiscountCoupon"
+    "SM.AccountClass" ||--o{ "SM.CouponItem" : "FK_CouponItem_LaborAccountClass"
+    "SM.LineItem" ||--o{ "SM.CouponItem" : "FK_CouponItem_LineItem"
+    "SM.AccountClass" ||--o{ "SM.CouponItem" : "FK_CouponItem_PartsAccountClass"
+    "SM.Addresses" ||--o{ "SM.CustomerAddresses" : "FK_CustomerAddresses_Addresses"
+    "SM.Customers" ||--o{ "SM.CustomerAddresses" : "FK_CustomerAddresses_Customers"
+    "SM.Email" ||--o{ "SM.CustomerEmails" : "FK_CustomerEmails_Email"
+    "SM.Customers" ||--o{ "SM.CustomerEmails" : "FK_Customers_CustomerEmails"
+    "SM.AccountClass" ||--o{ "SM.CustomerPaymentAccount" : "FK_CustomerPaymentAccount_AccountClassId"
+    "SM.Customers" ||--o{ "SM.CustomerPaymentAccount" : "FK_CustomerPaymentAccount_Customer"
+    "SM.PhoneNum" ||--o{ "SM.CustomerPhones" : "FK_CustomerPhones_PhoneNum"
+    "SM.Customers" ||--o{ "SM.CustomerPhones" : "FK_Customers_CustomerPhones"
+    "SM.FleetVendor" ||--o{ "SM.Customers" : "FK_Customer_FleetVendorId"
+    "SM.CustTitle" ||--o{ "SM.Customers" : "FK_Customers_CustTitle"
+    "SM.LaborRateDescription" ||--o{ "SM.Customers" : "FK_Customers_LaborRateDescription"
+    "SM.PartDiscountDescription" ||--o{ "SM.Customers" : "FK_Customers_PartDiscountDescription"
+    "SM.ReferralType" ||--o{ "SM.Customers" : "FK_Customers_ReferralType"
+    "SM.Customers" ||--o{ "SM.CustomerTaxes" : "FK_CustomerTaxes_Customers"
+    "SM.Tax" ||--o{ "SM.CustomerTaxes" : "FK_CustomerTaxes_Tax"
+    "SM.Customers" ||--o{ "SM.CustomerYTDAdjustment" : "FK_Customers_CustomerYTDAdjustment"
+    "SM.RepairOrderPhase" ||--o{ "SM.Disclaimer" : "FK_Disclaimer_RepairOrderPhase"
+    "SM.DiscountAmountType" ||--o{ "SM.DiscountCoupon" : "FK_DiscountCoupon_DiscountAmountType"
+    "SM.EmailType" ||--o{ "SM.Email" : "FK_Email_EmailType"
+    "SM.CommissionType" ||--o{ "SM.Employee" : "FK_Employee_CommissionType"
+    "SM.CommissionType" ||--o{ "SM.Employee" : "FK_Employee_CommissionType1"
+    "SM.CommissionType" ||--o{ "SM.Employee" : "FK_Employee_CommissionType2"
+    "SM.EmployeeType" ||--o{ "SM.Employee" : "FK_Employee_EmployeeType"
+    "SM.PayType" ||--o{ "SM.Employee" : "FK_Employee_PayType"
+    "SM.Addresses" ||--o{ "SM.EmployeeAddresses" : "FK_EmployeeAddresses_Addresses"
+    "SM.Employee" ||--o{ "SM.EmployeeAddresses" : "FK_EmployeeAddresses_Employee"
+    "SM.Employee" ||--o{ "SM.EmployeeHours" : "FK_EmployeeHours_EmployeeId"
+    "SM.Employee" ||--o{ "SM.EmployeePhones" : "FK_EmployeePhones_Employee"
+    "SM.PhoneNum" ||--o{ "SM.EmployeePhones" : "FK_EmployeePhones_PhoneNum"
+    "SM.ReportDefinition" ||--o{ "SM.EndOfDayReports" : "FK_ReportDefinition_EndOfDayReports"
+    "SM.AccountClass" ||--o{ "SM.EPayTransaction" : "FK_EPayTransaction_AccountClass"
+    "SM.Customers" ||--o{ "SM.EPayTransaction" : "FK_EPayTransaction_Customer"
+    "SM.Payment" ||--o{ "SM.EPayTransaction" : "FK_EPayTransaction_Payment"
+    "SM.RepairOrder" ||--o{ "SM.EPayTransaction" : "FK_EPayTransaction_RepairOrder"
+    "SM.RepairOrder" ||--o{ "SM.Estimate" : "FK_Estimate_RepairOrder"
+    "SM.AccountClass" ||--o{ "SM.FeeSetting" : "FK_FeeSetting_AccountClass"
+    "SM.AccountClass" ||--o{ "SM.FeeTransaction" : "FK_FeeTransaction_AccountClass"
+    "SM.Customers" ||--o{ "SM.FeeTransaction" : "FK_FeeTransaction_Customers"
+    "SM.Addresses" ||--o{ "SM.FleetVendor" : "FK_FleetVendor_BillingAddress"
+    "SM.Customers" ||--o{ "SM.FleetVendor" : "FK_FleetVendor_CustId"
+    "SM.FleetVendor" ||--o{ "SM.FleetVendor" : "FK_FleetVendor_Parent"
+    "SM.FleetVendor" ||--o{ "SM.FleetVendorContact" : "FK_FleetVendorContact_Customers"
+    "SM.FollowupType" ||--o{ "SM.Followup" : "FK_Followups_FollowupType"
+    "SM.AccountClass" ||--o{ "SM.GLAccounts" : "FK_AccountClass"
+    "SM.GLEntryTypes" ||--o{ "SM.GLAccounts" : "FK_GLEntryType"
+    "SM.Customers" ||--o{ "SM.GroupAssociation" : "FK_GroupAssociation_Customers"
+    "SM.Groups" ||--o{ "SM.GroupAssociation" : "FK_GroupAssociation_Groups"
+    "SM.Employee" ||--o{ "SM.Inspection" : "FK_Inspection_Employee"
+    "SM.RepairOrder" ||--o{ "SM.Inspection" : "FK_Inspection_RepairOrder"
+    "SM.Inspection" ||--o{ "SM.InspectionImage" : "FK_InspectionImage_Inspection"
+    "SM.Inspection" ||--o{ "SM.InspectionShare" : "FK_InspectionShare_Inspection"
+    "SM.InventoryCondition" ||--o{ "SM.Inventory" : "FK_Inventory_InventoryCondition"
+    "SM.Part" ||--o{ "SM.Inventory" : "FK_Inventory_Part"
+    "SM.Part" ||--o{ "SM.Inventory" : "FK_Inventory_Part_Supercede"
+    "SM.Part" ||--o{ "SM.InventoryTransaction" : "FK_InventoryTransaction_Part"
+    "SM.TransactionType" ||--o{ "SM.InventoryTransaction" : "FK_InventoryTransaction_TransactionType"
+    "SM.Vendor" ||--o{ "SM.InventoryTransaction" : "FK_InventoryTransaction_Vendor"
+    "SM.LaborRateDescription" ||--o{ "SM.LaborItem" : "FK_LaborItem_LaborRateDescription"
+    "SM.LineItem" ||--o{ "SM.LaborItem" : "FK_LaborItem_LineItem"
+    "SM.LaborRateDescription" ||--o{ "SM.LaborRateVersion" : "FK_LaborRateVersion_LaborRateDescription"
+    "SM.AccountClass" ||--o{ "SM.LineItem" : "FK_LineItem_AccountClass"
+    "SM.CannedJob" ||--o{ "SM.LineItem" : "FK_LineItem_CannedJob"
+    "SM.Category" ||--o{ "SM.LineItem" : "FK_LineItem_Category"
+    "SM.OrderRevision" ||--o{ "SM.LineItem" : "FK_LineItem_OrderRevision"
+    "SM.LineItem" ||--o{ "SM.LineItemTaxes" : "FK_LineItemTaxes_LineItem"
+    "SM.Tax" ||--o{ "SM.LineItemTaxes" : "FK_LineItemTaxes_Tax"
+    "SM.Employee" ||--o{ "SM.LineItemTechs" : "FK_LineItemTechs_Employee"
+    "SM.LineItem" ||--o{ "SM.LineItemTechs" : "FK_LineItemTechs_LineItem"
+    "SM.LineItem" ||--o{ "SM.NoteItem" : "FK_NoteItem_LineItem"
+    "SM.Employee" ||--o{ "SM.OrderRevision" : "FK_OrderRevision_Employee"
+    "SM.RepairOrder" ||--o{ "SM.OrderRevision" : "FK_OrderRevision_RepairOrder"
+    "SM.Vehicle" ||--o{ "SM.OrderRevision" : "FK_OrderRevision_Vehicle"
+    "SM.Category" ||--o{ "SM.Package" : "FK_Package_Category"
+    "SM.Package" ||--o{ "SM.PackageCommission" : "FK_PackageCommission_Package"
+    "SM.LineItem" ||--o{ "SM.PackageItem" : "FK_PackageItem_LineItem"
+    "SM.Package" ||--o{ "SM.PackageItem" : "FK_PackageItem_Package"
+    "SM.LineItem" ||--o{ "SM.PackageLineSequence" : "FK_PackageLineSequence_LineItem"
+    "SM.PackageItem" ||--o{ "SM.PackageLineSequence" : "FK_PackageLineSequence_PackageItem"
+    "SM.AccountClass" ||--o{ "SM.Part" : "FK_Part_AccountClass"
+    "SM.Category" ||--o{ "SM.Part" : "FK_Part_Category"
+    "SM.PartFee" ||--o{ "SM.Part" : "FK_Part_PartFee"
+    "SM.PartKit" ||--o{ "SM.Part" : "FK_Part_PartKit"
+    "SM.PartManufacturer" ||--o{ "SM.Part" : "FK_Part_PartManufacturer"
+    "SM.Category" ||--o{ "SM.PartDescription" : "FK_PartDescription_Category"
+    "SM.Vendor" ||--o{ "SM.PartDescription" : "FK_PartDescription_Vendor"
+    "SM.PartDiscountDescription" ||--o{ "SM.PartDiscountVersion" : "FK_PartDiscountVersion_PartDiscountDescription"
+    "SM.LineItem" ||--o{ "SM.PartFee" : "FK_PartFee_LineItem"
+    "SM.Vendor" ||--o{ "SM.PartItem" : "FK_PartItem_CatalogVendorId_VendorId"
+    "SM.LineItem" ||--o{ "SM.PartItem" : "FK_PartItem_LineItem"
+    "SM.Part" ||--o{ "SM.PartItem" : "FK_PartItem_Part"
+    "SM.PartDiscountDescription" ||--o{ "SM.PartItem" : "FK_PartItem_PartDiscountDescription"
+    "SM.PartManufacturer" ||--o{ "SM.PartItem" : "FK_PartItem_PartManufacturer"
+    "SM.Vendor" ||--o{ "SM.PartItem" : "FK_PartItem_Vendor"
+    "SM.AccountClass" ||--o{ "SM.PartKit" : "FK_PartKit_AccountClass"
+    "SM.Category" ||--o{ "SM.PartKit" : "FK_PartKit_Category"
+    "SM.Part" ||--o{ "SM.PartKitParts" : "FK_PartKitParts_Part"
+    "SM.PartKit" ||--o{ "SM.PartKitParts" : "FK_PartKitParts_PartKit"
+    "SM.Part" ||--o{ "SM.PartNumber" : "FK_PartNumber_Part"
+    "SM.Part" ||--o{ "SM.PartTaxAssociation" : "FK_PartTaxAssociation_Part"
+    "SM.Tax" ||--o{ "SM.PartTaxAssociation" : "FK_PartTaxAssociation_Tax"
+    "SM.Part" ||--o{ "SM.PartVendor" : "FK_PartVendor_Part"
+    "SM.Vendor" ||--o{ "SM.PartVendor" : "FK_PartVendor_Vendor"
+    "SM.AccountClass" ||--o{ "SM.Payment" : "FK_Payment_AccountClass"
+    "SM.Customers" ||--o{ "SM.Payment" : "FK_Payment_Customers"
+    "SM.InvoiceStatus" ||--o{ "SM.Payment" : "FK_Payment_InvoiceStatus"
+    "SM.PaymentTransaction" ||--o{ "SM.Payment" : "FK_Payment_PaymentTransaction"
+    "SM.RepairOrder" ||--o{ "SM.Payment" : "FK_Payment_RepairOrder"
+    "SM.Payment" ||--o{ "SM.PaymentApproval" : "FK_PaymentApproval_PaymentId"
+    "SM.PhoneDesc" ||--o{ "SM.PhoneNum" : "FK_PhoneNum_PhoneDesc"
+    "SM.Vendor" ||--o{ "SM.PODetail" : "FK_PODetail_CatalogVendorId_VendorId"
+    "SM.PartManufacturer" ||--o{ "SM.PODetail" : "FK_PODetail_MfgId1"
+    "SM.PartManufacturer" ||--o{ "SM.PODetail" : "FK_PODetail_MfgId2"
+    "SM.Part" ||--o{ "SM.PODetail" : "FK_PODetail_Part"
+    "SM.POMaster" ||--o{ "SM.PODetail" : "FK_PODetail_POMaster"
+    "SM.RepairOrder" ||--o{ "SM.PODetail" : "FK_PODetail_RepairOrder"
+    "SM.OrderRevision" ||--o{ "SM.PODetailRevision" : "FK_PORevision_OrderRevision"
+    "SM.PODetail" ||--o{ "SM.PODetailRevision" : "FK_PORevision_POMaster"
+    "SM.Employee" ||--o{ "SM.POMaster" : "FK_POMaster_Employee"
+    "SM.POShipVia" ||--o{ "SM.POMaster" : "FK_POMaster_POShipVia"
+    "SM.POState" ||--o{ "SM.POMaster" : "FK_POMaster_POState"
+    "SM.Vendor" ||--o{ "SM.POMaster" : "FK_POMaster_Vendor"
+    "SM.POMaster" ||--o{ "SM.POTaxes" : "FK_POTaxes_POMaster"
+    "SM.Tax" ||--o{ "SM.POTaxes" : "FK_POTaxes_Tax"
+    "SM.POMaster" ||--o{ "SM.POTaxSummary" : "FK_POTaxSummary_POMaster"
+    "SM.Tax" ||--o{ "SM.POTaxSummary" : "FK_POTaxSummary_Tax"
+    "SM.Customers" ||--o{ "SM.QuickClose" : "FK_QuickClose_Customer"
+    "SM.Employee" ||--o{ "SM.QuickClose" : "FK_QuickClose_ServiceWriter"
+    "SM.Vehicle" ||--o{ "SM.QuickClose" : "FK_QuickClose_Vehicle"
+    "SM.Category" ||--o{ "SM.Recommendations" : "FK_Recommendations_Category"
+    "SM.Vehicle" ||--o{ "SM.Recommendations" : "FK_Recommendations_Vehicle"
+    "SM.RepairOrder" ||--o{ "SM.RecordNumber" : "FK_RecordNumber_RepairOrder"
+    "SM.LineItem" ||--o{ "SM.RepairArticleLineItem" : "FK_RepairArticleLineItem_LineItem"
+    "SM.Category" ||--o{ "SM.RepairOrder" : "FK_RepairOrder_Category"
+    "SM.Customers" ||--o{ "SM.RepairOrder" : "FK_RepairOrder_Customer"
+    "SM.LaborRateDescription" ||--o{ "SM.RepairOrder" : "FK_RepairOrder_LaborRateDescription"
+    "SM.PartDiscountDescription" ||--o{ "SM.RepairOrder" : "FK_RepairOrder_PartDiscountDescription"
+    "SM.ReasonForVisit" ||--o{ "SM.RepairOrder" : "FK_RepairOrder_ReasonForVisit"
+    "SM.RepairOrderPhase" ||--o{ "SM.RepairOrder" : "FK_RepairOrder_RepairOrderPhase"
+    "SM.Vehicle" ||--o{ "SM.RepairOrder" : "FK_RepairOrder_VehicleId"
+    "SM.RepairOrder" ||--o{ "SM.RepairOrderApproval" : "FK_RepairOrderApproval_RepairOrder"
+    "SM.CannedJob" ||--o{ "SM.RepairOrderCannedJob" : "FK_RepairOrderCannedJob_CannedJob"
+    "SM.RepairOrder" ||--o{ "SM.RepairOrderCannedJob" : "FK_RepairOrderCannedJob_RepairOrder"
+    "SM.LineItem" ||--o{ "SM.RepairOrderLineItemSequence" : "FK_LineItem_LineItemSeq"
+    "SM.RepairOrder" ||--o{ "SM.RepairOrderLineItemSequence" : "FK_RepairOrderLineItemSequence"
+    "SM.RepairOrder" ||--o{ "SM.RepairOrderShare" : "FK_RepairOrderShare_RepairOrder"
+    "SM.FleetVendor" ||--o{ "SM.RepairOrderSnapshot" : "FK_RepairOrderSnapshot_FleetVendorId"
+    "SM.RepairOrder" ||--o{ "SM.RepairOrderSnapshot" : "FK_RepairOrderSnapshot_RepairOrderId"
+    "SM.RepairOrder" ||--o{ "SM.RepairOrderTaxes" : "FK_RepairOrderTaxes_RepairOrder"
+    "SM.Tax" ||--o{ "SM.RepairOrderTaxes" : "FK_RepairOrderTaxes_Tax"
+    "SM.RepairOrder" ||--o{ "SM.RepairOrderTaxSummary" : "FK_RepairOrderTaxSummary_RepairOrder"
+    "SM.Tax" ||--o{ "SM.RepairOrderTaxSummary" : "FK_RepairOrderTaxSummary_Tax"
+    "SM.CommissionType" ||--o{ "SM.RepairOrderTechRates" : "FK_RepairOrderTechRates_CommissionType"
+    "SM.CommissionType" ||--o{ "SM.RepairOrderTechRates" : "FK_RepairOrderTechRates_CommissionType1"
+    "SM.CommissionType" ||--o{ "SM.RepairOrderTechRates" : "FK_RepairOrderTechRates_CommissionType2"
+    "SM.Employee" ||--o{ "SM.RepairOrderTechRates" : "FK_RepairOrderTechRates_Employee"
+    "SM.EmployeeType" ||--o{ "SM.RepairOrderTechRates" : "FK_RepairOrderTechRates_EmployeeType"
+    "SM.PayType" ||--o{ "SM.RepairOrderTechRates" : "FK_RepairOrderTechRates_PayType"
+    "SM.RepairOrder" ||--o{ "SM.RepairOrderTechRates" : "FK_RepairOrderTechRates_RepairOrder"
+    "SM.Employee" ||--o{ "SM.RepairOrderTechs" : "FK_Employee_RepairOrderTechs"
+    "SM.RepairOrder" ||--o{ "SM.RepairOrderTechs" : "FK_RepairOrderTechs_RepairOrder"
+    "SM.TechRole" ||--o{ "SM.RepairOrderTechs" : "FK_RepairOrderTechs_TechRole"
+    "SM.ReportClass" ||--o{ "SM.ReportDefinition" : "FK_ReportClass_ReportDefinition"
+    "SM.ReportType" ||--o{ "SM.ReportDefinition" : "FK_ReportType_ReportDefinition"
+    "SM.ReportDefinition" ||--o{ "SM.ReportParams" : "FK_ReportDefinition_ReportParams"
+    "SM.ReportDefinition" ||--o{ "SM.ReportProtection" : "FK_ReportProtection_ReportDefinition"
+    "SM.Users" ||--o{ "SM.ReportProtection" : "FK_ReportProtection_Users"
+    "SM.ReportDefinition" ||--o{ "SM.ReportsUnclassified" : "FK_ReportsUnclassified_ReportDefinition"
+    "SM.LineItem" ||--o{ "SM.RevisionLineItemSequence" : "FK_LineItem_RevisionLineItemSequence"
+    "SM.OrderRevision" ||--o{ "SM.RevisionLineItemSequence" : "FK_OrderRevision_RevisionLineItemSequence"
+    "SM.OrderRevision" ||--o{ "SM.RevisionTaxSummary" : "FK_RevisionTaxSummary_OrderRevision"
+    "SM.Tax" ||--o{ "SM.RevisionTaxSummary" : "FK_RevisionTaxSummary_Tax"
+    "SM.Category" ||--o{ "SM.Schedule" : "FK_Schedule_Category"
+    "SM.Customers" ||--o{ "SM.Schedule" : "FK_Schedule_Customers"
+    "SM.Employee" ||--o{ "SM.Schedule" : "FK_Schedule_Employee"
+    "SM.ReasonForVisit" ||--o{ "SM.Schedule" : "FK_Schedule_ReasonForVisit"
+    "SM.RepairOrder" ||--o{ "SM.Schedule" : "FK_Schedule_RepairOrder"
+    "SM.CustomerPhones" ||--o{ "SM.Schedule" : "FK_Schedule_SchedulePrimaryCustomerPhone"
+    "SM.ScheduleResource" ||--o{ "SM.Schedule" : "FK_Schedule_ScheduleResource"
+    "SM.ScheduleStatus" ||--o{ "SM.Schedule" : "FK_Schedule_ScheduleStatus"
+    "SM.Employee" ||--o{ "SM.Schedule" : "FK_Schedule_ServiceWriter_Employee"
+    "SM.Vehicle" ||--o{ "SM.Schedule" : "FK_Schedule_Vehicle"
+    "SM.CannedJob" ||--o{ "SM.ScheduleCannedJob" : "FK_ScheduleCannedJob_CannedJob"
+    "SM.Category" ||--o{ "SM.ScheduleCannedJob" : "FK_ScheduleCannedJob_Category"
+    "SM.Schedule" ||--o{ "SM.ScheduleCannedJob" : "FK_ScheduleCannedJob_Schedule"
+    "SM.SpecialPackageCategory" ||--o{ "SM.SpecialPackage" : "FK_SpecialPackage_SpecialPackageLevel"
+    "SM.SpecialPackageType" ||--o{ "SM.SpecialPackageCategory" : "FK_SpecialPackageCategory_SpecialPackageType"
+    "SM.LineItem" ||--o{ "SM.SpecialPackageLineItemSequence" : "FK_SpecialPackageLineItemSequence_LineItem"
+    "SM.SpecialPackage" ||--o{ "SM.SpecialPackageLineItemSequence" : "FK_SpecialPackageLineItemSequence_SpecialPackage"
+    "SM.Category" ||--o{ "SM.StandardSymptom" : "FK_StandardSymptom_Category"
+    "SM.LineItem" ||--o{ "SM.SubletItem" : "FK_SubletItem_LineItem"
+    "SM.Vendor" ||--o{ "SM.SubletItem" : "FK_SubletItem_Vendor"
+    "SM.TaxCalculationTypes" ||--o{ "SM.Tax" : "FK_Tax_TaxCalculationTypes"
+    "SM.Tax" ||--o{ "SM.TaxRates" : "FK_TaxRates_Tax"
+    "SM.Customers" ||--o{ "SM.TextMessage" : "FK_TextMessage_Customers"
+    "SM.AccountClass" ||--o{ "SM.TextToPay" : "FK_TextToPay_AccountClass"
+    "SM.Customers" ||--o{ "SM.TextToPay" : "FK_TextToPay_Customers"
+    "SM.RepairOrder" ||--o{ "SM.TextToPay" : "FK_TextToPay_RepairOrder"
+    "SM.Vehicle" ||--o{ "SM.UserVehicleAttributes" : "FK_UserVehicleAttributes_Vehicle"
+    "SM.RepairOrder" ||--o{ "SM.VDoc" : "FK_VDoc_RepairOrder"
+    "DMV.BodyStyle" ||--o{ "SM.Vehicle" : "FK_Vehicle_BodyStyle"
+    "DMV.Brake" ||--o{ "SM.Vehicle" : "FK_Vehicle_Brake"
+    "SM.Customers" ||--o{ "SM.Vehicle" : "FK_Vehicle_Customers"
+    "DMV.Drive" ||--o{ "SM.Vehicle" : "FK_Vehicle_Drive"
+    "SM.PhoneNum" ||--o{ "SM.Vehicle" : "FK_Vehicle_DriverPhone"
+    "DMV.Engine" ||--o{ "SM.Vehicle" : "FK_Vehicle_Engine"
+    "DMV.GVW" ||--o{ "SM.Vehicle" : "FK_Vehicle_Gvw"
+    "SM.LaborRateDescription" ||--o{ "SM.Vehicle" : "FK_Vehicle_LaborRateDescription"
+    "DMV.Make" ||--o{ "SM.Vehicle" : "FK_Vehicle_Make"
+    "SM.PartDiscountDescription" ||--o{ "SM.Vehicle" : "FK_Vehicle_PartDiscountDescription"
+    "DMV.SubModel" ||--o{ "SM.Vehicle" : "FK_Vehicle_SubModel"
+    "DMV.Transmission" ||--o{ "SM.Vehicle" : "FK_Vehicle_Transmission"
+    "DMV.Year" ||--o{ "SM.Vehicle" : "FK_Vehicle_Year"
+    "SM.Vehicle" ||--o{ "SM.VehicleNotes" : "FK_VehicleNotes_Vehicle"
+    "SM.VehicleNoteTypes" ||--o{ "SM.VehicleNotes" : "FK_VehicleNotes_VehicleNoteTypes"
+    "SM.Tax" ||--o{ "SM.VehicleTaxes" : "FK_VehicleTaxes_Tax"
+    "SM.Vehicle" ||--o{ "SM.VehicleTaxes" : "FK_VehicleTaxes_Vehicle"
+    "SM.ConnectedVehicleProvider" ||--o{ "SM.VehicleTelemetry" : "FK_VehicleTelemetry_ConnectedVehicleProvider"
+    "SM.CatalogLink" ||--o{ "SM.Vendor" : "FK_Vendor_CatalogLink"
+    "SM.VendorType" ||--o{ "SM.Vendor" : "FK_Vendor_VendorType"
+    "SM.Addresses" ||--o{ "SM.VendorAddresses" : "FK_VendorAddresses_Addresses"
+    "SM.Vendor" ||--o{ "SM.VendorAddresses" : "FK_VendorAddresses_Vendor"
+    "SM.Vendor" ||--o{ "SM.VendorLink" : "FK_VendorLink_Vendor"
+    "SM.PhoneNum" ||--o{ "SM.VendorPhones" : "FK_VendorPhones_PhoneNum"
+    "SM.Vendor" ||--o{ "SM.VendorPhones" : "FK_VendorPhones_Vendor"
+    "Sync.UpdatesAvailable" ||--o{ "Sync.ResumeInfoDetails" : "FK_ResumeInfoDetails_UpdatesAvailable"
+    "Sync.SyncDownQueue" ||--o{ "Sync.SyncQueue" : "FK_SyncQueue_SyncDownQueue"
+    "Sync.SyncUpBatch" ||--o{ "Sync.SyncQueue" : "FK_SyncQueue_SyncUpBatch"
+    "Sync.SyncUpQueue" ||--o{ "Sync.SyncQueue" : "FK_SyncQueue_SyncUpQueue"
+    "Sync.UpdatesInstallStatus" ||--o{ "Sync.UpdatesAvailable" : "FK_UpdatesAvailable_UpdatesInstallStatus"
+    "TMP.ReservePONumberGroup" ||--o{ "TMP.ReservePONumber" : "FK_ReservePONumberGroup_ReservePONumber"
+    "SM.OrderRevision" ||--o{ "TMP.RevisionShare" : "FK_RevisionShare_OrderRevision"

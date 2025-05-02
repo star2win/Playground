@@ -1,0 +1,133 @@
+erDiagram
+    "Sync.AgentVariables" {
+        int VariableId
+        nvarchar Key
+        nvarchar Value
+        timestamp timestamp
+    }
+    "Sync.MigrationDocumentStatus" {
+        int DocumentStatusId
+        varchar DocumentStatusDescription
+    }
+    "Sync.MigrationRepository" {
+        int DocumentId
+        varchar DocumentLocalPath
+        bigint DocumentCRC
+        smallint DocumentStatus
+        varchar DocumentType
+        datetime2 LastChangeDate
+    }
+    "Sync.PersistentData" {
+        int Id
+        nvarchar Key
+        datetime2 Value
+    }
+    "Sync.ResumeInfoDetails" {
+        int UpdatesAvailableId
+        int ComponentId
+        int Status
+    }
+    "Sync.SyncDownQueue" {
+        int SyncDownQueueId
+        datetime2 RecordTs
+        nvarchar DataXML
+        uniqueidentifier MessageId
+        int MessageStatus
+    }
+    "Sync.SyncEntityColumnOverrides" {
+        nvarchar Schema
+        nvarchar Table
+        nvarchar Column
+        nvarchar ElementOrAttributeName
+        int SerializationType
+        nvarchar Types
+        bit IsPrimaryKey
+        bit IsForeignKey
+        nvarchar ForeignKeySchema
+        nvarchar ForeignKeyTable
+        bit IsRequired
+        bit Ignored
+        bit IsComputed
+    }
+    "Sync.SyncEntityColumns" {
+        nvarchar Schema
+        nvarchar Table
+        nvarchar Column
+        nvarchar Type
+        nvarchar ElementOrAttributeName
+        int SerializationType
+        bit IsPrimaryKey
+        nvarchar ForeignKeySchema
+        nvarchar ForeignKeyTable
+        bit IsRequired
+        bit IsComputed
+        bigint ColumnOrder
+    }
+    "Sync.SyncEntityObjects" {
+        nvarchar Schema
+        nvarchar Table
+        nvarchar XmlElementName
+        decimal NestingOrder
+        bit IsLinkEntity
+        bit IsPkComputed
+    }
+    "Sync.SyncEntityObjectsOverrides" {
+        nvarchar Schema
+        nvarchar Table
+        nvarchar XmlElementName
+        decimal NestingOrder
+        bit IsLinkEntity
+    }
+    "Sync.SyncQueue" {
+        int SyncQueueId
+        int SyncUpQueueId
+        int SyncDownQueueId
+        int BatchId
+    }
+    "Sync.SyncTables" {
+        int TableID
+        varchar SchemaName
+        varchar TableName
+    }
+    "Sync.SyncUpBatch" {
+        int BatchId
+        smallint BatchStatusId
+        datetime2 InsertDate
+        datetime2 LastChangeDate
+    }
+    "Sync.SyncUpBatchStatus" {
+        smallint BatchStatusId
+        varchar BatchStatusDescription
+    }
+    "Sync.SyncUpQueue" {
+        int RecordId
+        nvarchar SchemaName
+        nvarchar TableName
+        datetime2 RecordTs
+        varchar OperationType
+        nvarchar DataXML
+    }
+    "Sync.UpdatesAvailable" {
+        int UpdatesAvailableId
+        nvarchar FileName
+        nvarchar Path
+        smallint InstallationStatus
+        nvarchar Version
+        datetime2 InstallationDate
+        bigint FileCRC
+        bigint Size
+        nvarchar Dependency
+        int InstallationRetries
+        nvarchar PreviousVersion
+        nvarchar Description
+        smallint ReportStatus
+    }
+    "Sync.UpdatesInstallStatus" {
+        smallint InstallStatusId
+        varchar InstallStatusDescription
+    }
+    "Sync.UpdatesAvailable" ||--o{ "Sync.ResumeInfoDetails" : "FK_ResumeInfoDetails_UpdatesAvailable"
+    "Sync.SyncDownQueue" ||--o{ "Sync.SyncQueue" : "FK_SyncQueue_SyncDownQueue"
+    "Sync.SyncUpBatch" ||--o{ "Sync.SyncQueue" : "FK_SyncQueue_SyncUpBatch"
+    "Sync.SyncUpQueue" ||--o{ "Sync.SyncQueue" : "FK_SyncQueue_SyncUpQueue"
+    "Sync.UpdatesInstallStatus" ||--o{ "Sync.UpdatesAvailable" : "FK_UpdatesAvailable_UpdatesInstallStatus"

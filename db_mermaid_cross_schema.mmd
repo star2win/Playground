@@ -1,0 +1,229 @@
+erDiagram
+    "DMV.Transmission" {
+        int TransmissionId
+        nvarchar TransmissionType
+        nvarchar ManufacturerCode
+        nvarchar ControlType
+        bit ElectronicControlled
+        int NumberOfSpeeds
+        timestamp timestamp
+    }
+    "TMP.RevisionShare" {
+        int Id
+        int OrderRevisionId
+        bigint DataFileId
+        bigint ShareFileId
+        nvarchar ShareUrl
+        nvarchar Filename
+        datetime Date
+    }
+    "DMV.Brake" {
+        int BrakeId
+        nvarchar BrakeSystemType
+        timestamp timestamp
+    }
+    "DMV.Year" {
+        int Year
+        timestamp timestamp
+    }
+    "SM.OrderRevision" {
+        int OrderRevisionId
+        int RepairOrderId
+        int SubEstimateNumber
+        datetime RevisionDate
+        datetime TimeOfCall
+        nvarchar InitiatedBy
+        int WriterId
+        nvarchar AuthorizedBy
+        nvarchar NumberCalled
+        nvarchar Reason
+        money CurrentEstimate
+        money RevisionAmount
+        int VehicleId
+        money LaborAmount
+        money PartsAmount
+        money SubletAmount
+        timestamp timestamp
+        money HazWasteAmt
+        money ShopSuppliesAmt
+        money TaxAmtHazMat
+        money TaxAmtShopSupplies
+        money DiscountAmt
+        money TaxCharged
+        decimal TireFeeAmount
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "DMV.Make" {
+        int MakeId
+        nvarchar Name
+        timestamp timestamp
+    }
+    "SM.CannedJob" {
+        int CannedJobId
+        nvarchar Name
+        nvarchar Description
+        int CategoryId
+        int Year
+        int MakeId
+        int SubModelId
+        bit InQuickMenu
+        timestamp timestamp
+        nvarchar Make
+        nvarchar Model
+        int VehicleClass
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "ARC.TextMessage" {
+        int Id
+        int TextMessageId
+        int CustId
+        nvarchar Body
+        bigint ExternalId
+        int Type
+        nvarchar PhoneNumber
+        int Direction
+        int Status
+        nvarchar ErrorMessage
+        int ErrorCode
+        datetime Date
+        int RecordVersion
+        datetime2 LastChangeDate
+    }
+    "SM.Customers" {
+        int CustId
+        int TitleId
+        nvarchar FirstName
+        nvarchar LastName
+        datetime DOB
+        nvarchar SpouseName
+        nvarchar JobTitle
+        int PartLevel
+        int LaborLevel
+        bit ChargeOK
+        nvarchar Remarks
+        nvarchar ResaleNum
+        bit IncludeInCRMCampaign
+        datetime FeeAssessmentDate
+        money CurrentFeeAmount
+        bit NoLateFee
+        datetime NewCustFollowUpDate
+        bit EMailReminder
+        int RefById
+        int RefTypeId
+        bit TaxExempt
+        datetime LastVisited
+        datetime FirstVisited
+        int DeletedRepairOrderCount
+        decimal RepairOrderAdjustment
+        decimal BalanceDue
+        decimal CreditAmt
+        bit IsDeleted
+        timestamp timestamp
+        bit IsFromSchedule
+        nvarchar MembershipNo
+        int RecordVersion
+        bit SMSAllowed
+        datetime2 LastChangeDate
+        nvarchar FlagText
+        nvarchar EmailAddress
+        int FleetVendorId
+    }
+    "DMV.Drive" {
+        int DriveId
+        nvarchar DriveType
+        timestamp timestamp
+    }
+    "DMV.SubModel" {
+        int SubModelId
+        int ModelId
+        nvarchar Name
+        int DMVId
+        timestamp timestamp
+    }
+    "DMV.BodyStyle" {
+        int BodyStyleId
+        nvarchar Name
+        timestamp timestamp
+    }
+    "DMV.Engine" {
+        int EngineId
+        real DisplacementCID
+        real DisplacementLiters
+        int NumberOfCylinders
+        int ValvesPerCylinder
+        nvarchar FuelDeliveryMethodType
+        nvarchar FuelType
+        nvarchar FuelControlType
+        nvarchar HeadConfigurationType
+        nvarchar BoostType
+        nvarchar IgnitionSystem
+        nvarchar VinCode
+        nvarchar FuelSystem
+        nvarchar BlockConfiguration
+        nvarchar FuelSystemConfiguration
+        timestamp timestamp
+    }
+    "SM.Vehicle" {
+        int VehicleId
+        int CustId
+        int Year
+        int MakeId
+        int SubModelId
+        int BodyId
+        int EngineId
+        int TransmissionId
+        int BrakeId
+        int DriveTypeId
+        int GVWId
+        int Odometer1
+        int Odometer2
+        real MilesPerDay
+        nvarchar Vin
+        nvarchar MfgDate
+        datetime InspDate
+        datetime LastInDate
+        smallint LastRevision
+        nvarchar UnitNo
+        nvarchar License
+        nvarchar LicenseState
+        int PartLevel
+        int LaborLevel
+        bit UseVehicleLevels
+        nvarchar VehicleMemo
+        bit VehicleMemoPrintOnOrder
+        bit TaxExempt
+        bit IncludeInCRMCampaign
+        nvarchar Color
+        bit Deleted
+        timestamp timestamp
+        int VehicleClass
+        nvarchar DriverName
+        int DriverPhoneId
+        decimal EngineHoursIn
+        decimal EngineHoursOut
+        int RecordVersion
+        int ActiveRecallCount
+        datetime ActiveRecallLastChecked
+        datetime2 LastChangeDate
+        nvarchar FleetNo
+    }
+    "DMV.GVW" {
+        int GVWId
+        nvarchar GVWText
+        timestamp timestamp
+    }
+    "SM.Customers" ||--o{ "ARC.TextMessage" : "FK_ARC_TextMessage_Customers"
+    "DMV.Make" ||--o{ "SM.CannedJob" : "FK_CannedJob_Make"
+    "DMV.SubModel" ||--o{ "SM.CannedJob" : "FK_CannedJob_SubModel"
+    "DMV.BodyStyle" ||--o{ "SM.Vehicle" : "FK_Vehicle_BodyStyle"
+    "DMV.Brake" ||--o{ "SM.Vehicle" : "FK_Vehicle_Brake"
+    "DMV.Drive" ||--o{ "SM.Vehicle" : "FK_Vehicle_Drive"
+    "DMV.Engine" ||--o{ "SM.Vehicle" : "FK_Vehicle_Engine"
+    "DMV.GVW" ||--o{ "SM.Vehicle" : "FK_Vehicle_Gvw"
+    "DMV.Make" ||--o{ "SM.Vehicle" : "FK_Vehicle_Make"
+    "DMV.SubModel" ||--o{ "SM.Vehicle" : "FK_Vehicle_SubModel"
+    "DMV.Transmission" ||--o{ "SM.Vehicle" : "FK_Vehicle_Transmission"
+    "DMV.Year" ||--o{ "SM.Vehicle" : "FK_Vehicle_Year"
+    "SM.OrderRevision" ||--o{ "TMP.RevisionShare" : "FK_RevisionShare_OrderRevision"

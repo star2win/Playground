@@ -97,6 +97,57 @@ def generate_mermaid_er(tables, relationships):
         lines.append(f"    {quote_table(rel['pk_table'])} ||--o{{ {quote_table(rel['fk_table'])} : \"{rel['constraint_name']}\"")
     return '\n'.join(lines)
 
+def split_and_write_mermaid_files(tables, relationships, out_dir="."):
+    # 1. Identify all schemas
+    schemas = set(table.split('.', 1)[0] for table in tables)
+    schema_tables = {schema: [] for schema in schemas}
+    for table in tables:
+        schema = table.split('.', 1)[0]
+        schema_tables[schema].append(table)
+    # 2. Group relationships
+    schema_relationships = {schema: [] for schema in schemas}
+    cross_schema_relationships = []
+    for rel in relationships:
+        fk_schema = rel['fk_table'].split('.', 1)[0]
+        pk_schema = rel['pk_table'].split('.', 1)[0]
+        if fk_schema == pk_schema:
+            schema_relationships[fk_schema].append(rel)
+        else:
+            cross_schema_relationships.append(rel)
+    # 3. Write one file per schema
+    for schema in schemas:
+        file_path = os.path.join(out_dir, f"db_mermaid_{schema}.mmd")
+        lines = ["erDiagram"]
+        for table in schema_tables[schema]:
+            lines.append(f"    {quote_table(table)} {{")
+            for column, dtype in tables[table]:
+                lines.append(f"        {dtype} {column}")
+            lines.append("    }")
+        for rel in schema_relationships[schema]:
+            lines.append(f"    {quote_table(rel['pk_table'])} ||--o{{ {quote_table(rel['fk_table'])} : \"{rel['constraint_name']}\"")
+        # Optionally, add stubs for cross-schema relationships
+        for rel in cross_schema_relationships:
+            if rel['pk_table'] in schema_tables[schema] or rel['fk_table'] in schema_tables[schema]:
+                lines.append(f"    %% Cross-schema: {quote_table(rel['pk_table'])} ||--o{{ {quote_table(rel['fk_table'])} : \"{rel['constraint_name']}\"")
+        with open(file_path, "w") as f:
+            f.write('\n'.join(lines))
+    # 4. Write cross-schema relationships to their own file
+    cross_path = os.path.join(out_dir, "db_mermaid_cross_schema.mmd")
+    cross_lines = ["erDiagram"]
+    involved_tables = set()
+    for rel in cross_schema_relationships:
+        involved_tables.add(rel['pk_table'])
+        involved_tables.add(rel['fk_table'])
+    for table in involved_tables:
+        cross_lines.append(f"    {quote_table(table)} {{")
+        for column, dtype in tables[table]:
+            cross_lines.append(f"        {dtype} {column}")
+        cross_lines.append("    }")
+    for rel in cross_schema_relationships:
+        cross_lines.append(f"    {quote_table(rel['pk_table'])} ||--o{{ {quote_table(rel['fk_table'])} : \"{rel['constraint_name']}\"")
+    with open(cross_path, "w") as f:
+        f.write('\n'.join(cross_lines))
+
 try:
     # Establish connection
     conn = pyodbc.connect(connection_string)
@@ -105,13 +156,8 @@ try:
 
     tables = get_tables_and_columns(cursor)
     relationships = get_foreign_keys(cursor)
-    print(f"Foreign key relationships found: {relationships}")  # Debug print
-    mermaid_text = generate_mermaid_er(tables, relationships)
-
-    # Save to file
-    with open("db_mermaid.mmd", "w") as f:
-        f.write(mermaid_text)
-    print("Mermaid ER diagram with relationships saved to db_mermaid.mmd")
+    split_and_write_mermaid_files(tables, relationships, out_dir=".")
+    print("Mermaid ER diagrams split by schema and cross-schema relationships.")
 
     # Clean up
     cursor.close()
