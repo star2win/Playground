@@ -1,0 +1,13 @@
+{
+  "name": "playground-honc",
+  "version": "1.0.0",
+  "main": "dbconnection.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node dbconnection.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "mssql": "^10.0.0"
+  }
+}
