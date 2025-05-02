@@ -81,17 +81,20 @@ def get_foreign_keys(cursor):
         })
     return relationships
 
+def quote_table(table_name):
+    return f'"{table_name}"'
+
 def generate_mermaid_er(tables, relationships):
     lines = ["erDiagram"]
     for table, columns in tables.items():
-        lines.append(f"    {table} {{")
+        lines.append(f"    {quote_table(table)} {{")
         for column, dtype in columns:
             lines.append(f"        {dtype} {column}")
         lines.append("    }")
     # Add relationships
     for rel in relationships:
-        # Mermaid ER syntax: TableA ||--o{ TableB : "FK_name"
-        lines.append(f"    {rel['pk_table']} ||--o{{ {rel['fk_table']} : \"{rel['constraint_name']}\"")
+        # Mermaid ER syntax: "TableA" ||--o{ "TableB" : "FK_name"
+        lines.append(f"    {quote_table(rel['pk_table'])} ||--o{{ {quote_table(rel['fk_table'])} : \"{rel['constraint_name']}\"")
     return '\n'.join(lines)
 
 try:
@@ -102,6 +105,7 @@ try:
 
     tables = get_tables_and_columns(cursor)
     relationships = get_foreign_keys(cursor)
+    print(f"Foreign key relationships found: {relationships}")  # Debug print
     mermaid_text = generate_mermaid_er(tables, relationships)
 
     # Save to file

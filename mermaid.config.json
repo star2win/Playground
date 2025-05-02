@@ -1,0 +1,7 @@
+{
+    "maxTextSize": 1000000,
+    "er": {
+      "maxEntities": 1000,
+      "maxTextSize": 1000000
+    }
+  }
