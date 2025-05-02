@@ -1,0 +1,3 @@
+{
+  "Customer age by last visit": "WITH LastServiceOrder AS (\n    SELECT\n        CustId,\n        MAX(DatePosted) AS LastServiceDate\n    FROM SM.RepairOrder\n    WHERE CustId IS NOT NULL\n    GROUP BY CustId\n)\nSELECT\n    C.FirstName,\n    C.LastName,\n    C.EmailAddress,\n    MAX(PN.PhoneNum) AS PhoneNumber,\n    LSO.LastServiceDate\nFROM\n    SM.Customers AS C\nINNER JOIN\n    LastServiceOrder AS LSO\n    ON C.CustId = LSO.CustId\nLEFT JOIN\n    SM.CustomerPhones AS CP\n    ON C.CustId = CP.CustId\nLEFT JOIN\n    SM.PhoneNum AS PN\n    ON CP.PhoneId = PN.PhoneId\nWHERE\n    C.IsDeleted = 0\nGROUP BY\n    C.CustId,\n    C.FirstName,\n    C.LastName,\n    C.EmailAddress,\n    LSO.LastServiceDate\nORDER BY\n    LSO.LastServiceDate DESC;"
+}

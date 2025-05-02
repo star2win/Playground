@@ -1,0 +1,76 @@
+Customer age by last visit: |
+  WITH LastServiceOrder AS (
+      -- Find the latest service order date for each customer
+      SELECT
+          CustId,
+          MAX(DatePosted) AS LastServiceDate -- Use DatePosted from RepairOrder as the service date [cite: 125]
+      FROM SM.RepairOrder -- [cite: 124]
+      WHERE CustId IS NOT NULL -- Ensure we only consider orders linked to a customer [cite: 124]
+      GROUP BY CustId -- [cite: 124]
+  )
+  SELECT
+      C.FirstName,        -- Customer's first name [cite: 35]
+      C.LastName,         -- Customer's last name [cite: 35]
+      C.EmailAddress,     -- Customer's email address [cite: 38]
+      -- Select one phone number per customer. Using MAX arbitrarily if multiple exist.
+      MAX(PN.PhoneNum) AS PhoneNumber, -- Get phone number from PhoneNum table [cite: 108]
+      LSO.LastServiceDate -- Include the date of the last service order
+  FROM
+      SM.Customers AS C -- [cite: 35]
+  INNER JOIN
+      LastServiceOrder AS LSO
+      ON C.CustId = LSO.CustId -- Join customers with their last service order date [cite: 35, 124]
+  LEFT JOIN
+      SM.CustomerPhones AS CP
+      ON C.CustId = CP.CustId -- Join to link customers to phone IDs [cite: 34, 35, 254]
+  LEFT JOIN
+      SM.PhoneNum AS PN
+      ON CP.PhoneId = PN.PhoneId -- Join to get the actual phone number [cite: 34, 108, 254]
+  WHERE
+      C.IsDeleted = 0 -- Exclude customers marked as deleted [cite: 38]
+  GROUP BY
+      -- Group by customer and their last service date to handle potential multiple phone numbers
+      C.CustId,           -- [cite: 35]
+      C.FirstName,        -- [cite: 35]
+      C.LastName,         -- [cite: 35]
+      C.EmailAddress,     -- [cite: 38]
+      LSO.LastServiceDate -- Must include the date in the GROUP BY as it's selected
+  ORDER BY
+      LSO.LastServiceDate DESC; -- Order by the last service date in descending order
+
+Completed repair orders by status: |
+  SELECT
+      C.FirstName,                  -- Customer's first name
+      C.LastName,                   -- Customer's last name
+      C.EmailAddress,               -- Customer's email address
+      MAX(PN.PhoneNum) AS Phone,    -- Customer's phone number (picks one if multiple exist)
+      RO.DatePosted AS OrderDate    -- Date the service order was posted
+  FROM
+      SM.RepairOrder AS RO          -- Alias the RepairOrder table as RO
+  INNER JOIN
+      SM.Customers AS C             -- Alias the Customers table as C
+      ON RO.CustId = C.CustId       -- Link Repair Orders to Customers
+  LEFT JOIN
+      SM.CustomerPhones AS CP       -- Alias the CustomerPhones table as CP
+      ON C.CustId = CP.CustId       -- Link Customers to their phone IDs (LEFT JOIN handles customers without phones)
+  LEFT JOIN
+      SM.PhoneNum AS PN             -- Alias the PhoneNum table as PN
+      ON CP.PhoneId = PN.PhoneId    -- Link phone IDs to actual phone numbers
+  WHERE
+      -- Filter directly on the StatusDescription field within the RepairOrder table
+      RO.StatusDescription = 'Completed'
+      AND C.IsDeleted = 0           -- Exclude customers marked as deleted
+      AND RO.CustId IS NOT NULL     -- Ensure the order is associated with a customer
+  GROUP BY
+      -- Group by each specific order and associated customer details
+      -- This is necessary because of the MAX(PN.PhoneNum) aggregation
+      RO.RepairOrderId,             -- Group by the unique order ID
+      C.CustId,                     -- Group by the unique customer ID
+      C.FirstName,
+      C.LastName,
+      C.EmailAddress,
+      RO.DatePosted                 -- Group by the order date
+  ORDER BY
+      RO.DatePosted DESC,           -- Order by the date, most recent first
+      C.LastName,
+      C.FirstName;                  -- Then order by customer name
